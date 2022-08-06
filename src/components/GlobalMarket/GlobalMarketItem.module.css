@@ -1,4 +1,5 @@
 .global-item-wrapper {
   font-size: 2rem;
   border-color: white;
+  margin: 20px;
 }

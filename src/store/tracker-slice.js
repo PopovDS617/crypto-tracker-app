@@ -1,16 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialTrackerState = {
-  list: [
+  tokens: [
     {
-      tokenName: "TWT",
-      tokenBuyPrice: "1.16",
-      tokenSellPrice: "",
-      tokenCurrentPrice: "3.32",
-      tokenAmount: "125",
-      tokenGainLoss:
-        Number(tokenCurrentPrice) * Number(tokenAmount) -
-        Number(tokenBuyPrice) * Number(tokenAmount),
+      tokenName: "TWTUSDT",
+      buyPrice: "1.16",
+      sellPrice: "",
+      price: "0",
+      quantity: "125",
+      ratioGainLoss: "25",
+      status: "sold",
+    },
+    {
+      tokenName: "AVAXUSDT",
+      buyPrice: "1.16",
+      sellPrice: "",
+      price: "0",
+      quantity: "125",
+      ratioGainLoss: "25",
+      status: "sold",
     },
   ],
 };
@@ -18,7 +26,24 @@ const initialTrackerState = {
 const trackerSlice = createSlice({
   name: "tracker",
   initialState: initialTrackerState,
-  reducers: {},
+  reducers: {
+    updateTracker(state, action) {
+      const updatedArray = [...state.tokens];
+
+      const updatedItemIndex = updatedArray.findIndex(
+        (el) => el.tokenName === action.payload.tokenName
+      );
+
+      const updatedItem = {
+        ...updatedArray[updatedItemIndex],
+        price: Number(action.payload.tokenPrice).toFixed(3),
+      };
+
+      updatedArray[updatedItemIndex] = updatedItem;
+
+      state.tokens = updatedArray;
+    },
+  },
 });
 
 export const trackerActions = trackerSlice.actions;

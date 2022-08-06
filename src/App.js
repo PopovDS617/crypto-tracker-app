@@ -1,13 +1,12 @@
 import Layout from "./layouts/Layout";
-import Tracker from "./components/Tracker/Tracker";
+import TrackerList from "./components/Tracker/TrackerList";
 import GlobalMarketList from "./components/GlobalMarket/GlobalMarketList";
 
 function App() {
   return (
     <Layout>
-      <div>hello</div>
       <GlobalMarketList />
-      <Tracker />
+      <TrackerList />
     </Layout>
   );
 }

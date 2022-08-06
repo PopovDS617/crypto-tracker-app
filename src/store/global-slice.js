@@ -4,15 +4,15 @@ const initialGlobalMarketState = {
   globalTokens: [
     {
       tokenName: "BTCUSDT",
-      tokenPrice: 0,
+      price: 0,
     },
     {
       tokenName: "ETHUSDT",
-      tokenPrice: 0,
+      price: 0,
     },
     {
       tokenName: "BNBUSDT",
-      tokenPrice: 0,
+      price: 0,
     },
   ],
 };
@@ -29,7 +29,7 @@ const globalMarketSlice = createSlice({
 
       updatedArray[updatedItemIndex] = {
         tokenName: action.payload.tokenName,
-        tokenPrice: Number(action.payload.tokenPrice).toFixed(2),
+        tokenPrice: Number(action.payload.price).toFixed(0),
       };
       state.globalTokens = updatedArray;
     },

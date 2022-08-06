@@ -1,5 +1,17 @@
+* {
+  font-family: "IBM Plex Mono", monospace;
+}
+
 .main {
+  height: 100vh;
+}
+
+.main-dark {
   background-color: black;
   color: white;
-  height: 100vh;
+}
+
+.main-light {
+  background-color: white;
+  color: black;
 }
