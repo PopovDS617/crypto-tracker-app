@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const iniailGlobalMarketState = {
+const initialGlobalMarketState = {
   globalTokens: [
     {
-      tokenName: "BTC / USDT",
+      tokenName: "BTCUSDT",
       tokenPrice: 0,
     },
     {
-      tokenName: "ETC / USDT",
+      tokenName: "ETHUSDT",
       tokenPrice: 0,
     },
     {
-      tokenName: "BNB / USDT",
+      tokenName: "BNBUSDT",
       tokenPrice: 0,
     },
   ],
@@ -19,27 +19,15 @@ const iniailGlobalMarketState = {
 
 const globalMarketSlice = createSlice({
   name: "global",
-  initialState: iniailGlobalMarketState,
+  initialState: initialGlobalMarketState,
   reducers: {
-    updateGlobalBTC(state, action) {
+    updateGlobal(state, action) {
       const updatedArray = [...state.globalTokens];
-      updatedArray[0] = {
-        tokenName: action.payload.tokenName,
-        tokenPrice: Number(action.payload.tokenPrice).toFixed(2),
-      };
-      state.globalTokens = updatedArray;
-    },
-    updateGlobalETH(state, action) {
-      const updatedArray = [...state.globalTokens];
-      updatedArray[1] = {
-        tokenName: action.payload.tokenName,
-        tokenPrice: Number(action.payload.tokenPrice).toFixed(2),
-      };
-      state.globalTokens = updatedArray;
-    },
-    updateGlobalBNB(state, action) {
-      const updatedArray = [...state.globalTokens];
-      updatedArray[2] = {
+      const updatedItemIndex = updatedArray.findIndex(
+        (el) => el.tokenName === action.payload.tokenName
+      );
+
+      updatedArray[updatedItemIndex] = {
         tokenName: action.payload.tokenName,
         tokenPrice: Number(action.payload.tokenPrice).toFixed(2),
       };
