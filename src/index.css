@@ -5,5 +5,13 @@ body {
   padding: 0;
 }
 
-code {
+.favorites {
+  text-align: right;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tracker {
+  float: left;
 }

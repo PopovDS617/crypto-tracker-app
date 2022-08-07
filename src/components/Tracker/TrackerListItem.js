@@ -1,4 +1,6 @@
 import React from "react";
+import styles from "./TrackerListItem.module.css";
+
 const TrackerListItem = (props) => {
   return (
     <React.Fragment>
@@ -7,8 +9,13 @@ const TrackerListItem = (props) => {
       <td>{props.buyPrice}</td>
       <td>{props.sellPrice}</td>
       <td>{props.price}</td>
-      <td>{props.ratioGainLoss}</td>
+      <td className={props.ratioGainLoss < 0 ? styles.loss : styles.profit}>
+        {props.ratioGainLoss}
+      </td>
       <td>{props.status}</td>
+      <td>
+        <button onClick={props.onDelete}>delete</button>
+      </td>
     </React.Fragment>
   );
 };

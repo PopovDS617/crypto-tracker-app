@@ -1,65 +1,96 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import useFetch from "../../hooks/use-fetch";
+import { globalActions } from "../../store/global-slice";
 import styles from "./TrackerList.module.css";
 import TrackerListItem from "./TrackerListItem";
 
 const TrackerList = () => {
-  const tokenList = useSelector((state) => state.tracker.tokens);
+  const [filterValue, setFilterValue] = useState("all");
+  const dispatch = useDispatch();
+  const trackerList = useSelector((state) => state.global.logs);
+
   const appTheme = useSelector((state) => state.ui.theme);
-  const { fetchData, isLoading } = useFetch(tokenList, "tracker");
+
+  const deleteItemHandler = (id) => {
+    console.log({ id: id });
+    dispatch(globalActions.deleteLog({ id: id }));
+  };
 
   let currentThemeTable;
-  let currentThemeContent;
+
   if (appTheme === "dark") {
     currentThemeTable = styles.table;
   } else {
     currentThemeTable = styles["table-light"];
   }
 
-  const transformedList = tokenList.map((item) => {
+  const filterHandler = (e) => {
+    setFilterValue(e.target.value);
+  };
+  let filteredList = [...trackerList];
+  if (filterValue !== "all") {
+    filteredList = trackerList.filter((item) => item.status === filterValue);
+  }
+
+  let transformedList = filteredList.map((token) => {
     return (
       <tr key={Math.random().toFixed(8)}>
         <TrackerListItem
-          id={Math.random().toFixed(8)}
+          id={token.id}
           key={Math.random().toFixed(8)}
-          name={item.tokenName}
-          buyPrice={item.buyPrice}
-          quantity={item.quantity}
-          price={item.price}
-          sellprice={item.sellprice}
-          ratioGainLoss={item.ratioGainLoss}
-          status={item.status}
+          name={token.tokenName}
+          buyPrice={token.buyPrice}
+          quantity={token.quantity}
+          price={token.price}
+          sellprice={token.sellprice === false ? token.sellPrice : "-"}
+          ratioGainLoss={
+            token.status === "active"
+              ? Number(
+                  token.price * token.quantity - token.quantity * token.buyPrice
+                ).toFixed(2)
+              : token.ratioGainLoss
+          }
+          status={token.status}
+          onDelete={deleteItemHandler.bind(null, token.id)}
         />
       </tr>
     );
   });
 
-  useEffect(() => {
-    if (!isLoading) {
-      fetchData();
-      const fetchTimer = setInterval(fetchData, 5000);
-      return () => clearTimeout(fetchTimer);
-    }
-  }, [fetchData]);
+  const emptyList = (
+    <tr>
+      <td>empty</td>
+    </tr>
+  );
+  console.log(transformedList);
 
   return (
     <React.Fragment>
-      <p>{tokenList[0].name}</p>
       <table className={currentThemeTable}>
         <thead>
           <tr>
             <th>token</th>
-            <th>quantity of tokens</th>
+            <th>quantity</th>
             <th>buy price</th>
             <th>sell price</th>
             <th>current price</th>
             <th>profit / loss</th>
-            <th>status</th>
+            <th>
+              <select onChange={filterHandler} name="status">
+                <option value="all" defaultValue={true}>
+                  all
+                </option>
+                <option value="active">active</option>
+                <option value="sold">sold</option>
+              </select>
+            </th>
           </tr>
         </thead>
-        <tbody>{transformedList}</tbody>
+        <tbody>
+          {transformedList.length >= 1 ? transformedList : emptyList}
+        </tbody>
       </table>
+      <button>+ addnew +</button>
     </React.Fragment>
   );
 };
