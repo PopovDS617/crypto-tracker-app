@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./TrackerListItem.module.css";
+import React from 'react';
+import styles from './TrackerListItem.module.css';
 
 const TrackerListItem = (props) => {
   return (

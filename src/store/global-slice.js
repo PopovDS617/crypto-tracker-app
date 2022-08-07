@@ -1,75 +1,75 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice, current } from '@reduxjs/toolkit';
 
 const initialGlobalMarketState = {
   tokens: [
     {
-      tokenName: "BTCUSDT",
+      tokenName: 'BTCUSDT',
       price: 0,
       global: true,
       favorite: false,
     },
     {
-      tokenName: "ETHUSDT",
+      tokenName: 'ETHUSDT',
       price: 0,
       global: true,
       favorite: false,
     },
     {
-      tokenName: "TWTUSDT",
+      tokenName: 'TWTUSDT',
       price: 0,
       global: false,
       favorite: true,
     },
     {
-      tokenName: "DOTUSDT",
+      tokenName: 'DOTUSDT',
       price: 0,
       global: false,
       favorite: true,
     },
     {
-      tokenName: "BNBUSDT",
+      tokenName: 'BNBUSDT',
       price: 0,
       global: true,
       favorite: false,
     },
     {
-      tokenName: "XRPUSDT",
+      tokenName: 'XRPUSDT',
       price: 0,
       global: false,
       favorite: true,
     },
     {
-      tokenName: "ADAUSDT",
+      tokenName: 'ADAUSDT',
       price: 0,
       global: false,
       favorite: true,
     },
     {
-      tokenName: "AVAXUSDT",
+      tokenName: 'AVAXUSDT',
       price: 0,
       global: false,
       favorite: true,
     },
     {
-      tokenName: "NEARUSDT",
+      tokenName: 'NEARUSDT',
       price: 0,
       global: false,
       favorite: true,
     },
     {
-      tokenName: "INJUSDT",
+      tokenName: 'INJUSDT',
       price: 0,
       global: false,
       favorite: true,
     },
     {
-      tokenName: "SUSHIUSDT",
+      tokenName: 'SUSHIUSDT',
       price: 0,
       global: false,
       favorite: true,
     },
     {
-      tokenName: "UNIUSDT",
+      tokenName: 'UNIUSDT',
       price: 0,
       global: false,
       favorite: true,
@@ -78,49 +78,49 @@ const initialGlobalMarketState = {
   logs: [
     {
       id: Math.random().toFixed(8),
-      tokenName: "TWTUSDT",
-      buyPrice: "0.99",
+      tokenName: 'TWTUSDT',
+      buyPrice: '0.99',
       sellPrice: false,
       price: 0,
-      quantity: "125",
-      ratioGainLoss: "25",
-      status: "active",
+      quantity: '125',
+      ratioGainLoss: '25',
+      status: 'active',
     },
     {
       id: Math.random().toFixed(8),
-      tokenName: "BTCUSDT",
-      buyPrice: "9000",
+      tokenName: 'BTCUSDT',
+      buyPrice: '9000',
       sellPrice: false,
       price: 0,
-      quantity: "3",
-      ratioGainLoss: "25",
-      status: "active",
+      quantity: '3',
+      ratioGainLoss: '25',
+      status: 'active',
     },
     {
       id: Math.random().toFixed(8),
-      tokenName: "AVAXUSDT",
+      tokenName: 'AVAXUSDT',
       buyPrice: 19,
       sellPrice: 24,
       price: 0,
       quantity: 4,
       ratioGainLoss: 24 * 4 - 19 * 4,
-      status: "sold",
+      status: 'sold',
     },
     {
       id: Math.random().toFixed(8),
-      tokenName: "INJUSDT",
+      tokenName: 'INJUSDT',
       buyPrice: 1.325,
       sellPrice: 24,
       price: 0,
       quantity: 250,
       ratioGainLoss: 150,
-      status: "sold",
+      status: 'sold',
     },
   ],
 };
 
 const globalMarketSlice = createSlice({
-  name: "global",
+  name: 'global',
   initialState: initialGlobalMarketState,
   reducers: {
     updatePrice(state, action) {
@@ -157,7 +157,7 @@ const globalMarketSlice = createSlice({
         price: 0,
         quantity: action.payload.quantity,
         ratioGainLoss: 0,
-        status: "active",
+        status: 'active',
       };
       updatedArray.push(newLog);
       state.logs = updatedArray;

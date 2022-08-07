@@ -1,7 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
-import globalMarketReducer from "./global-slice";
+import { configureStore } from '@reduxjs/toolkit';
+import globalMarketReducer from './global-slice';
 
-import UiReducer from "./ui-slice";
+import UiReducer from './ui-slice';
 
 const store = configureStore({
   reducer: {

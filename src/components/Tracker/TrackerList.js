@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { globalActions } from "../../store/global-slice";
-import styles from "./TrackerList.module.css";
-import TrackerListItem from "./TrackerListItem";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { globalActions } from '../../store/global-slice';
+import styles from './TrackerList.module.css';
+import TrackerListItem from './TrackerListItem';
 
 const TrackerList = () => {
-  const [filterValue, setFilterValue] = useState("all");
+  const [filterValue, setFilterValue] = useState('all');
   const dispatch = useDispatch();
   const trackerList = useSelector((state) => state.global.logs);
 
@@ -18,17 +18,17 @@ const TrackerList = () => {
 
   let currentThemeTable;
 
-  if (appTheme === "dark") {
+  if (appTheme === 'dark') {
     currentThemeTable = styles.table;
   } else {
-    currentThemeTable = styles["table-light"];
+    currentThemeTable = styles['table-light'];
   }
 
   const filterHandler = (e) => {
     setFilterValue(e.target.value);
   };
   let filteredList = [...trackerList];
-  if (filterValue !== "all") {
+  if (filterValue !== 'all') {
     filteredList = trackerList.filter((item) => item.status === filterValue);
   }
 
@@ -42,9 +42,9 @@ const TrackerList = () => {
           buyPrice={token.buyPrice}
           quantity={token.quantity}
           price={token.price}
-          sellprice={token.sellprice === false ? token.sellPrice : "-"}
+          sellprice={token.sellprice === false ? token.sellPrice : '-'}
           ratioGainLoss={
-            token.status === "active"
+            token.status === 'active'
               ? Number(
                   token.price * token.quantity - token.quantity * token.buyPrice
                 ).toFixed(2)
