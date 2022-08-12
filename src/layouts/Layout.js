@@ -18,7 +18,7 @@ const Layout = (props) => {
     <React.Fragment>
       <main className={currentTheme}>
         <Header />
-        {props.children}
+        <div>{props.children}</div>
         {/* <Footer /> */}
       </main>
     </React.Fragment>

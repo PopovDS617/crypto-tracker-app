@@ -1,7 +1,7 @@
 .title {
-  margin: 0 50px 50px;
-
-  padding: 25px;
+  margin: 0 50px 15px;
+  width: 100%;
+  padding: 50px 25px;
   display: flex;
   flex-direction: row;
 }
@@ -9,4 +9,8 @@
 .theme-button {
   height: 70px;
   width: 70px;
+}
+
+h1 {
+  width: 90%;
 }

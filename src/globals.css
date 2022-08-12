@@ -1,24 +1,17 @@
-.trackerWrapper {
-  display: flex;
-  flex-direction: column;
-  border: 5px solid yellow;
-}
-
 .contentWrapper {
+  margin: 0;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  width: 100%;
-  height: 50%;
-  border: 5px solid yellow;
 }
 
 .tracker {
-  width: 50%;
+  width: 75%;
   border: 5px solid yellow;
 }
 
 .favorites {
-  width: 30%;
+  width: 25%;
   border: 5px solid yellow;
   display: flex;
   flex-direction: column;

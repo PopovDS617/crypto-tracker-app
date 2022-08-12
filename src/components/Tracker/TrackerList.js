@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { globalActions } from '../../store/global-slice';
 import styles from './TrackerList.module.css';
 import TrackerListItem from './TrackerListItem';
+import Modal from '../../UI/Modal';
+import { UiActions } from '../../store/ui-slice';
+import NewLogForm from '../../UI/NewLogForm';
 
 const TrackerList = () => {
   const [filterValue, setFilterValue] = useState('all');
@@ -10,6 +13,15 @@ const TrackerList = () => {
   const trackerList = useSelector((state) => state.global.logs);
 
   const appTheme = useSelector((state) => state.ui.theme);
+  const isModalShown = useSelector((state) => state.ui.showModal);
+
+  const showModalHandler = () => {
+    dispatch(UiActions.showModal());
+  };
+
+  const hideModalHandler = () => {
+    dispatch(UiActions.showModal());
+  };
 
   const deleteItemHandler = (id) => {
     console.log({ id: id });
@@ -42,7 +54,7 @@ const TrackerList = () => {
           buyPrice={token.buyPrice}
           quantity={token.quantity}
           price={token.price}
-          sellprice={token.sellprice === false ? token.sellPrice : '-'}
+          sellprice={token.sellPrice === null ? '-' : token.sellPrice}
           ratioGainLoss={
             token.status === 'active'
               ? Number(
@@ -62,11 +74,15 @@ const TrackerList = () => {
       <td>empty</td>
     </tr>
   );
-  console.log(transformedList);
 
   return (
     <React.Fragment>
       <div className={styles.trackerList}>
+        {isModalShown && (
+          <Modal onClose={hideModalHandler}>
+            <NewLogForm onClose={hideModalHandler} />
+          </Modal>
+        )}
         <table className={currentThemeTable}>
           <thead>
             <tr>
@@ -85,12 +101,15 @@ const TrackerList = () => {
                   <option value="sold">sold</option>
                 </select>
               </th>
-              <th>del</th>
+              <th className={styles.remove}>del</th>
             </tr>
           </thead>
           <tbody>
             {transformedList.length >= 1 ? transformedList : emptyList}
           </tbody>
+          <div className={styles.addBtn}>
+            <button onClick={showModalHandler}>add</button>
+          </div>
         </table>
       </div>
     </React.Fragment>

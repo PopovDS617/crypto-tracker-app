@@ -119,16 +119,6 @@ const initialGlobalMarketState = {
       ratioGainLoss: 150,
       status: 'sold',
     },
-    {
-      id: Math.random().toFixed(8),
-      tokenName: 'INJUSDT',
-      buyPrice: 1.325,
-      sellPrice: 24,
-      price: 0,
-      quantity: 250,
-      ratioGainLoss: 150,
-      status: 'sold',
-    },
   ],
 };
 
@@ -164,15 +154,17 @@ const globalMarketSlice = createSlice({
     addLog(state, action) {
       const updatedArray = [...state.logs];
       const newLog = {
+        id: Math.random().toFixed(8),
         tokenName: action.payload.tokenName,
         buyPrice: action.payload.buyPrice,
-        sellPrice: action.payload.sellPrice,
-        price: 0,
+        sellPrice: null,
+        price: null,
         quantity: action.payload.quantity,
         ratioGainLoss: 0,
         status: 'active',
       };
       updatedArray.push(newLog);
+      console.log(newLog);
       state.logs = updatedArray;
     },
 
@@ -183,7 +175,6 @@ const globalMarketSlice = createSlice({
         (item) => item.id !== action.payload.id
       );
 
-      console.log(filteredArray);
       state.logs = filteredArray;
     },
   },

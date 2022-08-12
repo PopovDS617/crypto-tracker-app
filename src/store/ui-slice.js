@@ -1,13 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const UiSlice = createSlice({
-  name: "ui",
+  name: 'ui',
   initialState: {
-    theme: "dark",
+    theme: 'dark',
+    showModal: false,
   },
   reducers: {
     changeTheme(state) {
-      state.theme = state.theme === "dark" ? "light" : "dark";
+      state.theme = state.theme === 'dark' ? 'light' : 'dark';
+    },
+    showModal(state) {
+      state.showModal = !state.showModal;
     },
   },
 });
