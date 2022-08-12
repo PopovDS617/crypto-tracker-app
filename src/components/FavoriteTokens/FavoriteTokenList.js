@@ -1,7 +1,7 @@
-import React from "react";
-import FavoriteTokenItem from "./FavoriteTokenItem";
-import { useSelector } from "react-redux";
-import styles from "./FavoriteTokenList.module.css";
+import React from 'react';
+import FavoriteTokenItem from './FavoriteTokenItem';
+import { useSelector } from 'react-redux';
+import styles from './FavoriteTokenList.module.css';
 
 const FavoriveTokenList = () => {
   let favoriteList = useSelector((state) => state.global.tokens);
@@ -19,7 +19,9 @@ const FavoriveTokenList = () => {
   });
   // change style
   return (
-    <ul className={(styles.favlist, "favorites")}>{favoriteListTransformed}</ul>
+    <div className={styles.favlist}>
+      <ul>{favoriteListTransformed}</ul>
+    </div>
   );
 };
 

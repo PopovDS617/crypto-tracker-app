@@ -1,9 +1,9 @@
-import styles from "./GlobalMarketItem.module.css";
+import styles from './GlobalMarketItem.module.css';
 
 const GlobalMarketItem = (props) => {
   return (
-    <section className={styles["global-item-wrapper"]}>
-      <div>{props.tokenName}</div>
+    <section className={styles['global-item-wrapper']}>
+      <div>{props.tokenGlobalName}</div>
       <div>{props.tokenCurrentPrice}</div>
     </section>
   );

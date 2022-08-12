@@ -1,14 +1,16 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialGlobalMarketState = {
   tokens: [
     {
+      displayGlobalName: 'BTC',
       tokenName: 'BTCUSDT',
       price: 0,
       global: true,
       favorite: false,
     },
     {
+      displayGlobalName: 'ETH',
       tokenName: 'ETHUSDT',
       price: 0,
       global: true,
@@ -27,6 +29,7 @@ const initialGlobalMarketState = {
       favorite: true,
     },
     {
+      displayGlobalName: 'BNB',
       tokenName: 'BNBUSDT',
       price: 0,
       global: true,
@@ -104,6 +107,16 @@ const initialGlobalMarketState = {
       price: 0,
       quantity: 4,
       ratioGainLoss: 24 * 4 - 19 * 4,
+      status: 'sold',
+    },
+    {
+      id: Math.random().toFixed(8),
+      tokenName: 'INJUSDT',
+      buyPrice: 1.325,
+      sellPrice: 24,
+      price: 0,
+      quantity: 250,
+      ratioGainLoss: 150,
       status: 'sold',
     },
     {

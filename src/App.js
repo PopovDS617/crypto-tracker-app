@@ -1,10 +1,10 @@
-import Layout from "./layouts/Layout";
-import TrackerList from "./components/Tracker/TrackerList";
-import GlobalMarketList from "./components/GlobalMarket/GlobalMarketList";
-import FavortieTokenList from "./components/FavoriteTokens/FavoriteTokenList";
-import React, { useEffect } from "react";
+import Layout from './layouts/Layout';
+import Tracker from './components/Tracker/Tracker';
+import GlobalMarketList from './components/GlobalMarket/GlobalMarketList';
+import FavortieTokenList from './components/FavoriteTokens/FavoriteTokenList';
+import React, { useEffect } from 'react';
 
-import useFetch from "../src/hooks/use-fetch";
+import useFetch from '../src/hooks/use-fetch';
 
 function App() {
   const { fetchData, isLoading } = useFetch();
@@ -20,8 +20,14 @@ function App() {
   return (
     <Layout>
       <GlobalMarketList />
-      <TrackerList />
-      <FavortieTokenList />
+      <div className="contentWrapper">
+        <div className="tracker">
+          <Tracker />
+        </div>
+        <div>
+          <FavortieTokenList className="favorites" />
+        </div>
+      </div>
     </Layout>
   );
 }

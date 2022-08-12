@@ -1,15 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Coustard&family=IBM+Plex+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Coustard&family=IBM+Plex+Mono&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-}
-
-.favorites {
-  text-align: right;
-  margin-right: 5%;
-  display: flex;
-  flex-direction: column;
 }
 
 .tracker {

@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect } from "react";
-import GlobalMarketItem from "./GlobalMarketItem";
-import { useSelector } from "react-redux/es/exports";
+import React, { useCallback, useEffect } from 'react';
+import GlobalMarketItem from './GlobalMarketItem';
+import { useSelector } from 'react-redux/es/exports';
 
-import styles from "./GlobalMarkerList.module.css";
-import useFetch from "../../hooks/use-fetch";
+import styles from './GlobalMarkerList.module.css';
+import useFetch from '../../hooks/use-fetch';
 
 const GlobalMarketList = () => {
   const loadedGlobalPrice = useSelector((state) => state.global.tokens);
@@ -13,7 +13,7 @@ const GlobalMarketList = () => {
       return (
         <GlobalMarketItem
           key={Math.random()}
-          tokenName={token.tokenName}
+          tokenGlobalName={token.displayGlobalName}
           tokenCurrentPrice={token.price}
         />
       );
@@ -22,7 +22,7 @@ const GlobalMarketList = () => {
 
   return (
     <React.Fragment>
-      <div className={styles["global-list"]}>{listGlobalMarket}</div>
+      <div className={styles['global-list']}>{listGlobalMarket}</div>
     </React.Fragment>
   );
 };

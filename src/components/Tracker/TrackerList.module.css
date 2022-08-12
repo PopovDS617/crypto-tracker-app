@@ -1,22 +1,29 @@
+.trackerList {
+  /* height: 70%; */
+  /* max-height: 70%; */
+  /* width: 80%; */
+  overflow-y: auto;
+  max-height: 600px;
+  border: 1px solid yellow;
+}
+
 .table {
-  font-size: 1.8rem;
-  font-weight: 100;
-  width: 70%;
+  font-size: 30px;
+
+  /* width: 100%; */
   margin-left: 5%;
   text-align: center;
 
-  border-collapse: collapse;
   border: 1px solid white;
 }
 
 .table-light {
-  font-size: 1.8rem;
-  font-weight: 400;
-  width: 70%;
+  font-size: 30px;
+
+  /* width: 100%; */
   margin-left: 5%;
   text-align: center;
 
-  border-collapse: collapse;
   border: 1px solid black;
 }
 
@@ -26,4 +33,11 @@ tr,
 thead,
 tbody {
   border: inherit;
+}
+
+table th {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background-color: black;
 }

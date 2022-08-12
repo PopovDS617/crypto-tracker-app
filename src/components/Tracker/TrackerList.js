@@ -66,31 +66,33 @@ const TrackerList = () => {
 
   return (
     <React.Fragment>
-      <table className={currentThemeTable}>
-        <thead>
-          <tr>
-            <th>token</th>
-            <th>quantity</th>
-            <th>buy price</th>
-            <th>sell price</th>
-            <th>current price</th>
-            <th>profit / loss</th>
-            <th>
-              <select onChange={filterHandler} name="status">
-                <option value="all" defaultValue={true}>
-                  all
-                </option>
-                <option value="active">active</option>
-                <option value="sold">sold</option>
-              </select>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {transformedList.length >= 1 ? transformedList : emptyList}
-        </tbody>
-      </table>
-      <button>+ addnew +</button>
+      <div className={styles.trackerList}>
+        <table className={currentThemeTable}>
+          <thead>
+            <tr>
+              <th>token</th>
+              <th>quantity</th>
+              <th>buy price</th>
+              <th>sell price</th>
+              <th>current price</th>
+              <th>profit / loss</th>
+              <th>
+                <select onChange={filterHandler} name="status">
+                  <option value="all" defaultValue={true}>
+                    all
+                  </option>
+                  <option value="active">active</option>
+                  <option value="sold">sold</option>
+                </select>
+              </th>
+              <th>del</th>
+            </tr>
+          </thead>
+          <tbody>
+            {transformedList.length >= 1 ? transformedList : emptyList}
+          </tbody>
+        </table>
+      </div>
     </React.Fragment>
   );
 };

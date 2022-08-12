@@ -1,0 +1,15 @@
+.favItem {
+  margin: 10px;
+  text-align: center;
+  border: 1px solid yellow;
+}
+
+.favItemTokenName {
+  margin: 5px;
+  width: 150x;
+}
+
+.favItemTokenPrice {
+  margin: 5px;
+  width: 10x;
+}
