@@ -1,6 +1,7 @@
 import Layout from './layouts/Layout';
 import TrackerList from './components/Tracker/TrackerList';
 import GlobalMarketList from './components/GlobalMarket/GlobalMarketList';
+import ResultList from './components/Results/ResultList';
 
 import React, { useEffect } from 'react';
 import './globals.css';
@@ -20,8 +21,14 @@ function App() {
 
   return (
     <Layout>
-      <GlobalMarketList />
-
+      <div className="topRowWrapper">
+        <div className="globalListContainer">
+          <GlobalMarketList />
+        </div>
+        <div className="resultListContainer">
+          <ResultList />
+        </div>
+      </div>
       <TrackerList />
     </Layout>
   );

@@ -1,9 +1,5 @@
 .global-list {
   display: flex;
   flex-direction: row;
-
-  width: 100%;
-  margin-left: 2%;
-  margin-bottom: 2%;
-  text-align: center;
+  justify-content: center;
 }
