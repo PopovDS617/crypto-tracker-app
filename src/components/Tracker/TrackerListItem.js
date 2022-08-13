@@ -14,6 +14,9 @@ const TrackerListItem = (props) => {
       </td>
       <td>{props.status}</td>
       <td>
+        <button>change</button>
+      </td>
+      <td>
         <button onClick={props.onDelete}>delete</button>
       </td>
     </React.Fragment>

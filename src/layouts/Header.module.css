@@ -1,16 +1,17 @@
 .title {
-  margin: 0 50px 15px;
+  margin: 0 5rem 5rem;
   width: 100%;
-  padding: 50px 25px;
+  padding: 4rem 4rem 1rem;
   display: flex;
   flex-direction: row;
 }
 
 .theme-button {
-  height: 70px;
-  width: 70px;
+  height: 5rem;
+  width: 5rem;
 }
 
 h1 {
   width: 90%;
+  font-size: 3rem;
 }

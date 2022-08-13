@@ -31,7 +31,7 @@ const TrackerList = () => {
   let currentThemeTable;
 
   if (appTheme === 'dark') {
-    currentThemeTable = styles.table;
+    currentThemeTable = styles['table-dark'];
   } else {
     currentThemeTable = styles['table-light'];
   }
@@ -54,7 +54,7 @@ const TrackerList = () => {
           buyPrice={token.buyPrice}
           quantity={token.quantity}
           price={token.price}
-          sellprice={token.sellPrice === null ? '-' : token.sellPrice}
+          sellPrice={token.sellPrice === null ? '-' : token.sellPrice}
           ratioGainLoss={
             token.status === 'active'
               ? Number(
@@ -93,7 +93,11 @@ const TrackerList = () => {
               <th>current price</th>
               <th>profit / loss</th>
               <th>
-                <select onChange={filterHandler} name="status">
+                <select
+                  onChange={filterHandler}
+                  name="status"
+                  className={styles.statusSelect}
+                >
                   <option value="all" defaultValue={true}>
                     all
                   </option>
@@ -101,7 +105,8 @@ const TrackerList = () => {
                   <option value="sold">sold</option>
                 </select>
               </th>
-              <th className={styles.remove}>del</th>
+              <th className={styles.itemChange}>change</th>
+              <th className={styles.itemRemove}>del</th>
             </tr>
           </thead>
           <tbody>
