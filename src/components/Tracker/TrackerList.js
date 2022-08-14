@@ -6,11 +6,13 @@ import TrackerListItem from './TrackerListItem';
 import Modal from '../../UI/Modal';
 import { UiActions } from '../../store/ui-slice';
 import NewLogForm from '../../UI/NewLogForm';
+import { current } from '@reduxjs/toolkit';
 
 const TrackerList = () => {
   const [filterValue, setFilterValue] = useState('all');
   const dispatch = useDispatch();
   const trackerList = useSelector((state) => state.global.logs);
+  const priceList = useSelector((state) => state.global.tokens);
 
   const appTheme = useSelector((state) => state.ui.theme);
   const isModalShown = useSelector((state) => state.ui.showModal);
@@ -24,15 +26,20 @@ const TrackerList = () => {
   };
 
   const deleteItemHandler = (id) => {
-    console.log({ id: id });
     dispatch(globalActions.deleteLog({ id: id }));
   };
 
   let currentThemeTable;
+  let currentButtonTheme;
+  let currentHeaderTheme;
 
   if (appTheme === 'dark') {
     currentThemeTable = styles['table-dark'];
+    currentHeaderTheme = `${styles.stikyHead} ${styles.stikyHeadDark}`;
+    currentButtonTheme = `${styles.addBtn} ${styles.btnDark}`;
   } else {
+    currentButtonTheme = `${styles.addBtn} ${styles.btnLight}`;
+    currentHeaderTheme = `${styles.stikyHead} ${styles.stikyHeadLight}`;
     currentThemeTable = styles['table-light'];
   }
 
@@ -45,6 +52,8 @@ const TrackerList = () => {
   }
 
   let transformedList = filteredList.map((token) => {
+    const tokenData = priceList.find((el) => token.tokenName === el.tokenName);
+
     return (
       <tr key={Math.random().toFixed(8)}>
         <TrackerListItem
@@ -53,12 +62,13 @@ const TrackerList = () => {
           name={token.tokenName}
           buyPrice={token.buyPrice}
           quantity={token.quantity}
-          price={token.price}
+          price={tokenData.price}
           sellPrice={token.sellPrice === null ? '-' : token.sellPrice}
           ratioGainLoss={
             token.status === 'active'
               ? Number(
-                  token.price * token.quantity - token.quantity * token.buyPrice
+                  tokenData.price * token.quantity -
+                    token.quantity * token.buyPrice
                 ).toFixed(2)
               : token.ratioGainLoss
           }
@@ -71,7 +81,9 @@ const TrackerList = () => {
 
   const emptyList = (
     <tr>
-      <td>empty</td>
+      <td className={styles.emptyList} colSpan={9}>
+        empty
+      </td>
     </tr>
   );
 
@@ -84,7 +96,7 @@ const TrackerList = () => {
           </Modal>
         )}
         <table className={currentThemeTable}>
-          <thead>
+          <thead className={currentHeaderTheme}>
             <tr>
               <th>token</th>
               <th>quantity</th>
@@ -112,10 +124,11 @@ const TrackerList = () => {
           <tbody>
             {transformedList.length >= 1 ? transformedList : emptyList}
           </tbody>
-          <div className={styles.addBtn}>
-            <button onClick={showModalHandler}>add</button>
-          </div>
+          <div className={styles.addBtn}></div>
         </table>
+        <button onClick={showModalHandler} className={currentButtonTheme}>
+          add log
+        </button>
       </div>
     </React.Fragment>
   );

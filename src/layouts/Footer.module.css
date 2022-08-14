@@ -1,0 +1,9 @@
+.footer {
+  text-align: center;
+}
+
+.footer > a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+}

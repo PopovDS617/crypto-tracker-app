@@ -1,17 +1,38 @@
-.title {
-  margin: 0 5rem 5rem;
-  width: 100%;
-  padding: 4rem 4rem 1rem;
+.header {
+  margin: 0 1rem 1rem;
   display: flex;
   flex-direction: row;
 }
 
-.theme-button {
-  height: 5rem;
-  width: 5rem;
+.headerTitle {
+  width: 80%;
+}
+.headerTitle h1 {
+  font-size: 3rem;
 }
 
-h1 {
-  width: 90%;
-  font-size: 3rem;
+.headerActions {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 20%;
+}
+
+.headerActions button {
+  box-sizing: border-box;
+  height: 3rem;
+  width: 10rem;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.btnDark {
+  background-color: white;
+  color: black;
+  transition: all 0.8s;
+}
+.btnLight {
+  background-color: black;
+  color: white;
+  transition: all 0.8s;
 }

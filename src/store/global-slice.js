@@ -3,82 +3,212 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialGlobalMarketState = {
   tokens: [
     {
-      displayGlobalName: 'BTC',
       tokenName: 'BTCUSDT',
       price: 0,
+      dailyChange: 0,
       global: true,
+      displayGlobalFullName: 'BTC',
+      displayGlobalShortName: 'Bitcoin',
     },
     {
-      displayGlobalName: 'ETH',
       tokenName: 'ETHUSDT',
       price: 0,
+      dailyChange: 0,
       global: true,
+      displayGlobalShortName: 'ETH',
+      displayGlobalFullName: 'Ethereum',
     },
     {
-      displayGlobalName: 'BNB',
+      tokenName: 'SOLUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: true,
+      displayGlobalShortName: 'SOL',
+      displayGlobalFullName: 'Solana',
+    },
+    {
+      tokenName: 'ETCUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
       tokenName: 'BNBUSDT',
       price: 0,
+      dailyChange: 0,
       global: true,
+      displayGlobalShortName: 'BNB',
+      displayGlobalFullName: 'Binance Coin',
     },
     {
-      displayGlobalName: 'XRP',
+      tokenName: 'ADAUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: 'MATICUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
       tokenName: 'XRPUSDT',
       price: 0,
+      dailyChange: 0,
       global: true,
+      displayGlobalShortName: 'XRP',
+      displayGlobalFullName: 'Ripple',
     },
     {
-      displayGlobalName: 'DOT',
-      tokenName: 'DOTUSDT',
-      price: 0,
-      global: true,
-    },
-
-    {
-      displayGlobalName: 'TWT',
-      tokenName: 'TWTUSDT',
-      price: 0,
-      global: true,
-    },
-
-    {
-      displayGlobalName: 'AVAX',
       tokenName: 'AVAXUSDT',
       price: 0,
+      dailyChange: 0,
       global: true,
+      displayGlobalShortName: 'AVAX',
+      displayGlobalFullName: 'Avalanche',
     },
     {
-      displayGlobalName: 'NEAR',
+      tokenName: 'DOGEUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: 'LTCUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: true,
+      displayGlobalShortName: 'LTC',
+      displayGlobalFullName: 'Litecoin',
+    },
+    {
+      tokenName: 'DOTUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: true,
+      displayGlobalShortName: 'DOT',
+      displayGlobalFullName: 'Polkadot',
+    },
+    {
+      tokenName: 'SHIBUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: 'TRXUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: 'LINKUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
       tokenName: 'NEARUSDT',
       price: 0,
-      global: true,
-    },
-
-    {
-      displayGlobalName: 'SUSHI',
-      tokenName: 'SUSHIUSDT',
-      price: 0,
-      global: true,
+      dailyChange: 0,
+      global: false,
     },
     {
-      displayGlobalName: 'UNI',
-      tokenName: 'UNIUSDT',
-      price: 0,
-      global: true,
-    },
-    {
-      displayGlobalName: 'CAKE',
       tokenName: 'CAKEUSDT',
       price: 0,
+      dailyChange: 0,
       global: true,
+      displayGlobalShortName: 'CAKE',
+      displayGlobalFullName: 'PancakeSwap',
+    },
+    {
+      tokenName: 'SUSHIUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: true,
+      displayGlobalShortName: 'SUSHI',
+      displayGlobalFullName: 'Sushi',
+    },
+    {
+      tokenName: 'UNIUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: true,
+      displayGlobalShortName: 'UNI',
+      displayGlobalFullName: 'Uniswap',
+    },
+    {
+      tokenName: 'AAVEUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: 'ATOMUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: 'GMTUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: 'RUNEUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: 'TWTUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: true,
+      displayGlobalShortName: 'TWT',
+      displayGlobalFullName: 'Trust Wallet Token',
+    },
+    {
+      tokenName: 'ZECUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: '1INCHUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: 'LUNAUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: 'MANAUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
+    },
+    {
+      tokenName: 'GLMRUSDT',
+      price: 0,
+      dailyChange: 0,
+      global: false,
     },
   ],
+
   logs: [
     {
       id: Math.random().toFixed(8),
       tokenName: 'TWTUSDT',
       buyPrice: '0.99',
       sellPrice: null,
-      price: 0,
+
       quantity: '125',
       ratioGainLoss: '25',
       status: 'active',
@@ -88,7 +218,7 @@ const initialGlobalMarketState = {
       tokenName: 'BTCUSDT',
       buyPrice: '9000',
       sellPrice: null,
-      price: 0,
+
       quantity: '3',
       ratioGainLoss: '25',
       status: 'active',
@@ -98,17 +228,17 @@ const initialGlobalMarketState = {
       tokenName: 'AVAXUSDT',
       buyPrice: 19,
       sellPrice: 24,
-      price: 0,
+
       quantity: 4,
       ratioGainLoss: 24 * 4 - 19 * 4,
       status: 'sold',
     },
     {
       id: Math.random().toFixed(8),
-      tokenName: 'INJUSDT',
+      tokenName: 'SUSHIUSDT',
       buyPrice: 1.325,
       sellPrice: 24,
-      price: 0,
+
       quantity: 250,
       ratioGainLoss: 150,
       status: 'sold',
@@ -122,28 +252,23 @@ const globalMarketSlice = createSlice({
   reducers: {
     updatePrice(state, action) {
       const updatedArray = [...state.tokens];
-      const updatedLogs = [...state.logs];
-      // updatedArray.map((el, index) => {
-      //   return (el.price = action.payload[index].price);
-      // });
+
       for (let i = 0; i < updatedArray.length; i++) {
         for (let x = 0; x < updatedArray.length; x++) {
-          if (updatedArray[i].tokenName === action.payload[x].symbol) {
-            updatedArray[i].price = Number(action.payload[x].price).toFixed(2);
+          if (
+            updatedArray[i].tokenName === action.payload.currentPrice[x].symbol
+          ) {
+            updatedArray[i] = {
+              ...updatedArray[i],
+              price: Number(action.payload.currentPrice[x].price).toFixed(2),
+              dailyChange: Number(
+                action.payload.dailyPrice[x].priceChange
+              ).toFixed(2),
+            };
           }
         }
       }
-
-      for (let i = 0; i < updatedLogs.length; i++) {
-        for (let x = 0; x < action.payload.length; x++) {
-          if (updatedLogs[i].tokenName === action.payload[x].symbol) {
-            updatedLogs[i].price = Number(action.payload[x].price).toFixed(3);
-          }
-        }
-      }
-
       state.tokens = updatedArray;
-      state.logs = updatedLogs;
     },
     addLog(state, action) {
       const updatedArray = [...state.logs];
@@ -158,7 +283,7 @@ const globalMarketSlice = createSlice({
         status: 'active',
       };
       updatedArray.push(newLog);
-      console.log(newLog);
+
       state.logs = updatedArray;
     },
 

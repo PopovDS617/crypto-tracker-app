@@ -1,11 +1,35 @@
 .global-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-color: white;
-  margin: 1.2rem;
+  margin: 0.1rem;
+  border: 0.1rem solid black;
+  font-size: 0.5rem;
 }
 
 .global-item-text {
-  font-size: 2.3rem;
+  text-align: center;
 }
 .global-item-price {
-  font-size: 1.5rem;
+  font-size: 0.3rem;
+}
+
+.profit {
+  color: green;
+}
+
+.loss {
+  color: red;
+}
+
+.shortNameText {
+  font-size: 0.7rem;
+  margin-bottom: 0.1rem;
+}
+
+.fullNameText {
+  font-size: 0.4rem;
+  font-style: italic;
 }

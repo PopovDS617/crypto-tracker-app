@@ -1,31 +1,43 @@
-.topRowWrapper {
+.layout {
   display: flex;
-  flex-direction: row;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
 }
 
-.globalListContainer {
-  width: 75%;
-  margin: 5px;
-  padding: 5px;
-  border: 2px solid red;
+.layout-dark {
+  color: white;
+  background-color: black;
+  transition: all 1s;
 }
 
-.resultListContainer {
-  width: 25%;
-  margin: 5px;
-  padding: 5px;
-  border: 2px solid green;
+.layout-light {
+  color: black;
+  background-color: white;
+  transition: all 1s;
 }
 
-@media only screen and (max-width: 600px) {
-  .topRowWrapper {
-    flex-direction: column;
-  }
-  .globalListContainer {
-    width: 100%;
-  }
+.main {
+  display: flex;
+  flex: 1;
+}
 
-  .resultListContainer {
-    width: 100%;
-  }
+.main > .tracker {
+  flex: 1;
+}
+
+.main > .list,
+.main > .aside {
+  flex: 0 0 10vw;
+}
+.main > .nav {
+  order: -1;
+}
+
+.header,
+.footer,
+.tracker,
+.list,
+.aside {
+  padding: 1em;
 }

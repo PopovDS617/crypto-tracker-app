@@ -1,56 +1,58 @@
 .trackerList {
-  width: 100%;
   overflow-y: auto;
-  max-height: 800px;
+
+  max-height: 60vh;
 }
 
 table {
-  width: 80%;
-  font-size: 2rem;
-  margin: 1rem 4rem;
+  width: 90%;
+  font-size: 1rem;
+  margin: 0.1rem 1rem;
+  border-collapse: separate;
+  text-align: center;
+  table-layout: fixed;
+}
+
+table td {
+  width: 8rem;
 }
 
 table td,
 th {
-  padding: 0.2rem;
-}
-
-.table-dark {
-  text-align: center;
-}
-.table-light {
-  text-align: center;
+  padding: 0.1rem;
 }
 
 .table-light th {
-  background-color: white;
-  border-collapse: collapse;
-}
-.table-dark th {
-  background-color: black;
-  border-collapse: collapse;
-}
-
-.table-light tr,
-th {
+  background-color: inherit;
   border: 0.1rem solid black;
 }
 
-.table-dark tr,
-th {
+.table-dark th {
+  background-color: inherit;
   border: 0.1rem solid white;
 }
 
-table th {
+.stikyHead {
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 999;
+
+  border: 0.1rem solid white;
 }
 
-.addBtn {
+.stikyHeadDark {
+  color: white;
+  background-color: black;
+  transition: all 1s;
 }
+.stikyHeadLight {
+  color: black;
+  background-color: white;
+  transition: all 1s;
+}
+
 .statusSelect {
-  font-size: 30px;
+  font-size: 1rem;
   text-align: center;
   font-style: italic;
   background-color: inherit;
@@ -66,11 +68,36 @@ table th {
 
 .itemRemove {
   border: none;
+  width: 8rem;
 }
 .itemChange {
   border: none;
+  width: 8rem;
 }
 
 table tr td:last-child {
   border: none;
+}
+
+.addBtn {
+  box-sizing: border-box;
+  height: 3rem;
+  width: 6rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.btnDark {
+  background-color: white;
+  color: black;
+  transition: all 1s;
+}
+.btnLight {
+  background-color: black;
+  color: white;
+  transition: all 1s;
+}
+
+.emptyList {
+  font-size: 2rem;
 }

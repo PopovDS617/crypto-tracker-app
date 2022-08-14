@@ -6,18 +6,30 @@ const Header = () => {
   const appTheme = useSelector((state) => state.ui.theme);
   const dispatch = useDispatch();
 
-  let buttonText = appTheme === 'dark' ? 'to light mode' : 'to dark mode';
+  let buttonText;
+  let buttonStyle;
+  if (appTheme === 'dark') {
+    buttonText = 'to light mode';
+    buttonStyle = styles.btnDark;
+  } else {
+    buttonText = 'to dark mode';
+    buttonStyle = styles.btnLight;
+  }
 
   const changeThemeHandler = () => {
     dispatch(UiActions.changeTheme());
   };
 
   return (
-    <header className={styles.title}>
-      <h1>crypto tracker</h1>
-      <button className={styles['theme-button']} onClick={changeThemeHandler}>
-        {buttonText}
-      </button>
+    <header className={styles.header}>
+      <div className={styles.headerTitle}>
+        <h1>crypto tracker</h1>
+      </div>
+      <div className={styles.headerActions}>
+        <button className={buttonStyle} onClick={changeThemeHandler}>
+          {buttonText}
+        </button>
+      </div>
     </header>
   );
 };

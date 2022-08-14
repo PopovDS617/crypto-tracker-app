@@ -1,20 +1,21 @@
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import GlobalMarketItem from './GlobalMarketItem';
 import { useSelector } from 'react-redux/es/exports';
 
 import styles from './GlobalMarkerList.module.css';
-import useFetch from '../../hooks/use-fetch';
 
 const GlobalMarketList = () => {
-  const loadedGlobalPrice = useSelector((state) => state.global.tokens);
+  const tokenList = useSelector((state) => state.global.tokens);
 
-  const listGlobalMarket = loadedGlobalPrice.map((token) => {
+  const listGlobalMarket = tokenList.map((token) => {
     if (token.global) {
       return (
         <GlobalMarketItem
           key={Math.random()}
-          tokenGlobalName={token.displayGlobalName}
+          tokenGlobalShortName={token.displayGlobalShortName}
+          tokenGlobalFullName={token.displayGlobalFullName}
           tokenCurrentPrice={token.price}
+          dailyChange={token.dailyChange}
         />
       );
     }
