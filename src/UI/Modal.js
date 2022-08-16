@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NewLogForm from './NewLogForm';
 
 import styles from './Modal.module.css';
 

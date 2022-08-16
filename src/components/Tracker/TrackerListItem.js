@@ -4,6 +4,9 @@ import styles from './TrackerListItem.module.css';
 const TrackerListItem = (props) => {
   return (
     <React.Fragment>
+      <td>
+        <button onClick={props.onSell}>sell</button>
+      </td>
       <td>{props.name}</td>
       <td>{props.quantity}</td>
       <td>{props.buyPrice}</td>

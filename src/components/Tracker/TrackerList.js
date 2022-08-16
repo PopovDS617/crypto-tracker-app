@@ -6,27 +6,34 @@ import TrackerListItem from './TrackerListItem';
 import Modal from '../../UI/Modal';
 import { UiActions } from '../../store/ui-slice';
 import NewLogForm from '../../UI/NewLogForm';
-import { current } from '@reduxjs/toolkit';
+import SellLogForm from '../../UI/SellLogForm';
 
 const TrackerList = () => {
   const [filterValue, setFilterValue] = useState('all');
+  const [isSelling, setIsSelling] = useState('');
   const dispatch = useDispatch();
   const trackerList = useSelector((state) => state.global.logs);
   const priceList = useSelector((state) => state.global.tokens);
 
   const appTheme = useSelector((state) => state.ui.theme);
-  const isModalShown = useSelector((state) => state.ui.showModal);
+  const isAddModalShown = useSelector((state) => state.ui.showAddModal);
+  const isSellModalShown = useSelector((state) => state.ui.showSellModal);
 
-  const showModalHandler = () => {
-    dispatch(UiActions.showModal());
+  const showAddModalHandler = () => {
+    dispatch(UiActions.showAddModal());
   };
 
-  const hideModalHandler = () => {
-    dispatch(UiActions.showModal());
+  const hideAllModalsHandler = () => {
+    dispatch(UiActions.hideAllModals());
   };
 
   const deleteItemHandler = (id) => {
     dispatch(globalActions.deleteLog({ id: id }));
+  };
+
+  const showSellModalHandler = (id) => {
+    dispatch(UiActions.showSellModal());
+    setIsSelling(id);
   };
 
   let currentThemeTable;
@@ -74,6 +81,7 @@ const TrackerList = () => {
           }
           status={token.status}
           onDelete={deleteItemHandler.bind(null, token.id)}
+          onSell={showSellModalHandler.bind(null, token.id)}
         />
       </tr>
     );
@@ -90,14 +98,21 @@ const TrackerList = () => {
   return (
     <React.Fragment>
       <div className={styles.trackerList}>
-        {isModalShown && (
-          <Modal onClose={hideModalHandler}>
-            <NewLogForm onClose={hideModalHandler} />
+        {isAddModalShown && (
+          <Modal onClose={hideAllModalsHandler}>
+            <NewLogForm onClose={hideAllModalsHandler} />
           </Modal>
         )}
+        {isSellModalShown && (
+          <Modal onClose={hideAllModalsHandler}>
+            <SellLogForm onClose={hideAllModalsHandler} sellId={isSelling} />
+          </Modal>
+        )}
+
         <table className={currentThemeTable}>
           <thead className={currentHeaderTheme}>
             <tr>
+              <th>sell</th>
               <th>token</th>
               <th>quantity</th>
               <th>buy price</th>
@@ -126,7 +141,7 @@ const TrackerList = () => {
           </tbody>
           <div className={styles.addBtn}></div>
         </table>
-        <button onClick={showModalHandler} className={currentButtonTheme}>
+        <button onClick={showAddModalHandler} className={currentButtonTheme}>
           add log
         </button>
       </div>

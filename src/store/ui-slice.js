@@ -4,14 +4,24 @@ const UiSlice = createSlice({
   name: 'ui',
   initialState: {
     theme: 'dark',
-    showModal: false,
+    showAddModal: false,
+    showSellModal: false,
   },
   reducers: {
     changeTheme(state) {
       state.theme = state.theme === 'dark' ? 'light' : 'dark';
     },
-    showModal(state) {
-      state.showModal = !state.showModal;
+    showAddModal(state) {
+      state.showAddModal = !state.showAddModal;
+      state.showSellModal = false;
+    },
+    showSellModal(state) {
+      state.showSellModal = !state.showSellModal;
+      state.showAddModal = false;
+    },
+    hideAllModals(state) {
+      state.showSellModal = false;
+      state.showAddModal = false;
     },
   },
 });

@@ -296,6 +296,23 @@ const globalMarketSlice = createSlice({
 
       state.logs = filteredArray;
     },
+    sellLog(state, action) {
+      const logArray = [...state.logs];
+      const itemIndex = logArray.findIndex((el) => el.id === action.payload.id);
+      let updatedItem = logArray[itemIndex];
+      updatedItem = {
+        ...logArray[itemIndex],
+        sellPrice: action.payload.sellPrice,
+        status: 'sold',
+        ratioGainLoss:
+          logArray[itemIndex].quantity * action.payload.sellPrice -
+          logArray[itemIndex].quantity * logArray[itemIndex].buyPrice,
+      };
+
+      logArray[itemIndex] = updatedItem;
+
+      state.logs = logArray;
+    },
   },
 });
 
