@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { globalActions } from '../../store/global-slice';
 import styles from './TrackerList.module.css';
@@ -97,54 +97,57 @@ const TrackerList = () => {
 
   return (
     <React.Fragment>
-      <div className={styles.trackerList}>
-        {isAddModalShown && (
-          <Modal onClose={hideAllModalsHandler}>
-            <NewLogForm onClose={hideAllModalsHandler} />
-          </Modal>
-        )}
-        {isSellModalShown && (
-          <Modal onClose={hideAllModalsHandler}>
-            <SellLogForm onClose={hideAllModalsHandler} sellId={isSelling} />
-          </Modal>
-        )}
+      <section>
+        <div className={styles.trackerList}>
+          {isAddModalShown && (
+            <Modal onClose={hideAllModalsHandler}>
+              <NewLogForm onClose={hideAllModalsHandler} />
+            </Modal>
+          )}
+          {isSellModalShown && (
+            <Modal onClose={hideAllModalsHandler}>
+              <SellLogForm onClose={hideAllModalsHandler} sellId={isSelling} />
+            </Modal>
+          )}
 
-        <table className={currentThemeTable}>
-          <thead className={currentHeaderTheme}>
-            <tr>
-              <th>sell</th>
-              <th>token</th>
-              <th>quantity</th>
-              <th>buy price</th>
-              <th>sell price</th>
-              <th>current price</th>
-              <th>profit / loss</th>
-              <th>
-                <select
-                  onChange={filterHandler}
-                  name="status"
-                  className={styles.statusSelect}
-                >
-                  <option value="all" defaultValue={true}>
-                    all
-                  </option>
-                  <option value="active">active</option>
-                  <option value="sold">sold</option>
-                </select>
-              </th>
-              <th className={styles.itemChange}>change</th>
-              <th className={styles.itemRemove}>del</th>
-            </tr>
-          </thead>
-          <tbody>
-            {transformedList.length >= 1 ? transformedList : emptyList}
-          </tbody>
-          <div className={styles.addBtn}></div>
-        </table>
-        <button onClick={showAddModalHandler} className={currentButtonTheme}>
-          add log
-        </button>
-      </div>
+          <table className={currentThemeTable}>
+            <thead className={currentHeaderTheme}>
+              <tr>
+                <th>sell</th>
+                <th>token</th>
+                <th>quantity</th>
+                <th>buy price</th>
+                <th>sell price</th>
+                <th>current price</th>
+                <th>profit / loss</th>
+                <th>
+                  <select
+                    onChange={filterHandler}
+                    name="status"
+                    className={styles.statusSelect}
+                  >
+                    <option value="all" defaultValue={true}>
+                      all
+                    </option>
+                    <option value="active">active</option>
+                    <option value="sold">sold</option>
+                  </select>
+                </th>
+                <th className={styles.itemChange}>change</th>
+                <th className={styles.itemRemove}>del</th>
+              </tr>
+            </thead>
+            <tbody>
+              {transformedList.length >= 1 ? transformedList : emptyList}
+            </tbody>
+          </table>
+        </div>
+        <div className={styles.addLogControls}>
+          <button onClick={showAddModalHandler} className={currentButtonTheme}>
+            add log
+          </button>
+        </div>
+      </section>
     </React.Fragment>
   );
 };

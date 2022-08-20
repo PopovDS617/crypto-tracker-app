@@ -1,11 +1,18 @@
 import React from 'react';
 import styles from './TrackerListItem.module.css';
+import DoneIcon from '../../UI/DoneIcon';
+import DeleteIcon from '../../UI/DeleteIcon';
+import EditIcon from '../../UI/EditIcon';
 
 const TrackerListItem = (props) => {
   return (
     <React.Fragment>
       <td>
-        <button onClick={props.onSell}>sell</button>
+        {props.status === 'active' && (
+          <span className={styles.icon} onClick={props.onSell}>
+            <DoneIcon />
+          </span>
+        )}
       </td>
       <td>{props.name}</td>
       <td>{props.quantity}</td>
@@ -17,10 +24,14 @@ const TrackerListItem = (props) => {
       </td>
       <td>{props.status}</td>
       <td>
-        <button>change</button>
+        <span className={styles.icon}>
+          <EditIcon />
+        </span>
       </td>
       <td>
-        <button onClick={props.onDelete}>delete</button>
+        <span className={styles.icon} onClick={props.onDelete}>
+          <DeleteIcon />
+        </span>
       </td>
     </React.Fragment>
   );

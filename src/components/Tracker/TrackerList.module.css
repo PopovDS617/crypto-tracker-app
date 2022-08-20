@@ -1,7 +1,7 @@
 .trackerList {
   overflow-y: auto;
 
-  max-height: 60vh;
+  max-height: 50vh;
 }
 
 table {
@@ -52,6 +52,7 @@ th {
 }
 
 .statusSelect {
+  font-family: inherit;
   font-size: 1rem;
   text-align: center;
   font-style: italic;
@@ -60,6 +61,7 @@ th {
   background: inherit;
   background-color: transparent;
   border: none;
+  outline: none;
 }
 
 .statusSelect option {
@@ -75,11 +77,18 @@ th {
   width: 8rem;
 }
 
-table tr td:last-child {
+/* tr td:last-child {
   border: none;
 }
+table tr td:first-child {
+  border: none;
+} */
 
+.emptyList {
+  font-size: 2rem;
+}
 .addBtn {
+  margin-left: 12.5rem;
   box-sizing: border-box;
   height: 3rem;
   width: 6rem;
@@ -98,6 +107,6 @@ table tr td:last-child {
   transition: all 1s;
 }
 
-.emptyList {
-  font-size: 2rem;
+.addLogControls {
+  margin-top: 0.5rem;
 }

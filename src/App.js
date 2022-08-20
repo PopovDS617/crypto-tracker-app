@@ -35,11 +35,10 @@ function App() {
       <div className="header">
         <Header />
       </div>
-
+      <div className="list">
+        <GlobalMarketList />
+      </div>
       <main className="main">
-        <div className="list">
-          <GlobalMarketList />
-        </div>
         <div className="tracker">
           <TrackerList />
         </div>

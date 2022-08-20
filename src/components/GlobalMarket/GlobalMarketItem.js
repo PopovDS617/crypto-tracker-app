@@ -19,11 +19,10 @@ const GlobalMarketItem = (props) => {
         <div className={styles.fullNameText}>{props.tokenGlobalFullName}</div>
       </div>
       <div className={styles['global-item-price']}>
-        price:
-        {props.tokenCurrentPrice}
+        {`price: ${props.tokenCurrentPrice}`}
       </div>
-      <div>
-        24h change:
+      <div className={styles.dailyChangeText}>
+        <span>24h:</span>
         <span className={dailyChangeColor}>{dailyChangeDisplay}</span>
       </div>
     </section>

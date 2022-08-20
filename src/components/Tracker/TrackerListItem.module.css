@@ -5,3 +5,11 @@
 .loss {
   color: red;
 }
+
+.icon {
+  opacity: 0.3;
+}
+
+.icon:hover {
+  opacity: 1;
+}

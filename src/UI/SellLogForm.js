@@ -29,28 +29,35 @@ const SellLogForm = (props) => {
   };
 
   return (
-    <div>
-      <div>
-        <div>{sellItem.tokenName}</div>
-        <div>{sellItem.quantity}</div>
-        <div>{sellItem.buyPrice}</div>
-        <div>{sellItem.sellPrice}</div>
-        <div>{sellItem.price}</div>
-        <div
+    <div className={styles.sellFormContainer}>
+      <div className={styles.tokenSellFormContainer}>
+        <div>Token: {sellItem.tokenName}</div>
+        <div>Quantity: {sellItem.quantity}</div>
+        <div>Buy price: {sellItem.buyPrice}</div>
+        {/* <div>{sellItem.sellPrice}</div> */}
+        {/* <div>{sellItem.price}</div> */}
+        {/* <div
           className={sellItem.ratioGainLoss < 0 ? styles.loss : styles.profit}
         >
           {sellItem.ratioGainLoss}
-        </div>
+        </div> */}
       </div>
 
-      <div>
+      <div className={styles.formContainer}>
         <form onSubmit={sellSubmitHandler}>
           <input
+            className={styles.sellFormInput}
             placeholder="enter sell price"
             onChange={sellPriceInputHandler}
           />
-          <button>sell</button>
-          <button onClick={props.onClose}>close</button>
+          <button className={styles.formButton}>sell</button>
+          <button
+            onClick={props.onClose}
+            className={styles.formButton}
+            type="button"
+          >
+            close
+          </button>
         </form>
       </div>
     </div>

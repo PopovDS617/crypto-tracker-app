@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { globalActions } from '../store/global-slice';
+import styles from './NewLogForm.module.css';
 
 const NewLogForm = (props) => {
   const inputPriceRef = useRef();
@@ -36,20 +37,38 @@ const NewLogForm = (props) => {
         quantity: enteredQuantity,
       })
     );
+    props.onClose();
   };
 
   return (
-    <div>
+    <div className={styles.newLogContainer}>
       <form onSubmit={addLogHandler}>
-        <select ref={selectedTokenRef}>
-          <option disabled>choose</option>
-          {sortedSelectOptionsList}
-        </select>
+        <div className={styles.addFormSelectContainer}>
+          <select ref={selectedTokenRef} className={styles.addFormSelect}>
+            <option disabled>choose</option>
+            {sortedSelectOptionsList}
+          </select>
+        </div>
 
-        <input placeholder="price" ref={inputPriceRef} />
-        <input placeholder="quantity" ref={inputQuantityRef} />
-        <button>add</button>
-        <button onClick={props.onClose}>close</button>
+        <div className={styles.addFormInputs}>
+          <input
+            placeholder="price"
+            ref={inputPriceRef}
+            className={styles.addFormInput}
+          />
+          <input
+            placeholder="quantity"
+            ref={inputQuantityRef}
+            className={styles.addFormInput}
+          />
+        </div>
+
+        <div className={styles.addFormControls}>
+          <button>add</button>
+          <button onClick={props.onClose} type="button">
+            close
+          </button>
+        </div>
       </form>
     </div>
   );

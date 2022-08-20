@@ -26,12 +26,8 @@
   flex: 1;
 }
 
-.main > .list,
 .main > .aside {
   flex: 0 0 10vw;
-}
-.main > .nav {
-  order: -1;
 }
 
 .header,
