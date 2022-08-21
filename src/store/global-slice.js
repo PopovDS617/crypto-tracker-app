@@ -206,21 +206,19 @@ const initialGlobalMarketState = {
     {
       id: Math.random().toFixed(8),
       tokenName: 'TWTUSDT',
-      buyPrice: '0.99',
+      buyPrice: 0.99,
       sellPrice: null,
-
-      quantity: '125',
-      ratioGainLoss: '25',
+      quantity: 125,
+      ratioGainLoss: 0,
       status: 'active',
     },
     {
       id: Math.random().toFixed(8),
       tokenName: 'BTCUSDT',
-      buyPrice: '9000',
+      buyPrice: 1200,
       sellPrice: null,
-
-      quantity: '3',
-      ratioGainLoss: '25',
+      quantity: 0.5,
+      ratioGainLoss: 0,
       status: 'active',
     },
     {
@@ -228,19 +226,17 @@ const initialGlobalMarketState = {
       tokenName: 'AVAXUSDT',
       buyPrice: 19,
       sellPrice: 24,
-
-      quantity: 4,
-      ratioGainLoss: 24 * 4 - 19 * 4,
+      quantity: 50,
+      ratioGainLoss: 0,
       status: 'sold',
     },
     {
       id: Math.random().toFixed(8),
       tokenName: 'SUSHIUSDT',
-      buyPrice: 1.325,
-      sellPrice: 24,
-
-      quantity: 250,
-      ratioGainLoss: 150,
+      buyPrice: 1.225,
+      sellPrice: 1.552,
+      quantity: 800,
+      ratioGainLoss: 0,
       status: 'sold',
     },
   ],
@@ -260,8 +256,8 @@ const globalMarketSlice = createSlice({
           ) {
             updatedArray[i] = {
               ...updatedArray[i],
-              price: Number(action.payload.currentPrice[x].price).toFixed(2),
-              dailyChange: Number(
+              price: parseInt(action.payload.currentPrice[x].price).toFixed(2),
+              dailyChange: parseInt(
                 action.payload.dailyPrice[x].priceChange
               ).toFixed(2),
             };
@@ -305,12 +301,28 @@ const globalMarketSlice = createSlice({
         sellPrice: action.payload.sellPrice,
         status: 'sold',
         ratioGainLoss:
-          logArray[itemIndex].quantity * action.payload.sellPrice -
+          logArray[itemIndex].quantity * +action.payload.sellPrice -
           logArray[itemIndex].quantity * logArray[itemIndex].buyPrice,
       };
 
       logArray[itemIndex] = updatedItem;
 
+      state.logs = logArray;
+    },
+    changeLog(state, action) {
+      const logArray = [...state.logs];
+      const itemIndex = logArray.findIndex((el) => el.id === action.payload.id);
+      let updatedItem = logArray[itemIndex];
+      updatedItem = {
+        ...logArray[itemIndex],
+        buyPrice: +action.payload.buyPrice,
+        sellPrice: +action.payload.sellPrice,
+        quantity: +action.payload.quantity,
+        ratioGainLoss:
+          (action.payload.sellPrice - logArray[itemIndex].buyPrice) *
+          logArray[itemIndex].quantity,
+      };
+      logArray[itemIndex] = updatedItem;
       state.logs = logArray;
     },
   },

@@ -8,6 +8,7 @@
 
 .icon {
   opacity: 0.3;
+  cursor: pointer;
 }
 
 .icon:hover {

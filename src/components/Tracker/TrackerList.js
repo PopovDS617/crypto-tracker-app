@@ -5,12 +5,14 @@ import styles from './TrackerList.module.css';
 import TrackerListItem from './TrackerListItem';
 import Modal from '../../UI/Modal';
 import { UiActions } from '../../store/ui-slice';
-import NewLogForm from '../../UI/NewLogForm';
-import SellLogForm from '../../UI/SellLogForm';
+import NewLogForm from '../Forms/NewLogForm';
+import SellLogForm from '../Forms/SellLogForm';
+import ChangeLogForm from '../Forms/ChangeLogForm';
 
 const TrackerList = () => {
   const [filterValue, setFilterValue] = useState('all');
   const [isSelling, setIsSelling] = useState('');
+  const [isEditing, setIsEditing] = useState('');
   const dispatch = useDispatch();
   const trackerList = useSelector((state) => state.global.logs);
   const priceList = useSelector((state) => state.global.tokens);
@@ -18,6 +20,7 @@ const TrackerList = () => {
   const appTheme = useSelector((state) => state.ui.theme);
   const isAddModalShown = useSelector((state) => state.ui.showAddModal);
   const isSellModalShown = useSelector((state) => state.ui.showSellModal);
+  const isEditModalShown = useSelector((state) => state.ui.showEditModal);
 
   const showAddModalHandler = () => {
     dispatch(UiActions.showAddModal());
@@ -34,6 +37,11 @@ const TrackerList = () => {
   const showSellModalHandler = (id) => {
     dispatch(UiActions.showSellModal());
     setIsSelling(id);
+  };
+
+  const showEditModalHandler = (id) => {
+    dispatch(UiActions.showEditModal());
+    setIsEditing(id);
   };
 
   let currentThemeTable;
@@ -59,7 +67,7 @@ const TrackerList = () => {
   }
 
   let transformedList = filteredList.map((token) => {
-    const tokenData = priceList.find((el) => token.tokenName === el.tokenName);
+    const tokenData = priceList.find((el) => el.tokenName === token.tokenName);
 
     return (
       <tr key={Math.random().toFixed(8)}>
@@ -73,15 +81,13 @@ const TrackerList = () => {
           sellPrice={token.sellPrice === null ? '-' : token.sellPrice}
           ratioGainLoss={
             token.status === 'active'
-              ? Number(
-                  tokenData.price * token.quantity -
-                    token.quantity * token.buyPrice
-                ).toFixed(2)
-              : token.ratioGainLoss
+              ? ((tokenData.price - token.buyPrice) * token.quantity).toFixed(2)
+              : ((token.sellPrice - token.buyPrice) * token.quantity).toFixed(2)
           }
           status={token.status}
           onDelete={deleteItemHandler.bind(null, token.id)}
           onSell={showSellModalHandler.bind(null, token.id)}
+          onEdit={showEditModalHandler.bind(null, token.id)}
         />
       </tr>
     );
@@ -109,11 +115,19 @@ const TrackerList = () => {
               <SellLogForm onClose={hideAllModalsHandler} sellId={isSelling} />
             </Modal>
           )}
+          {isEditModalShown && (
+            <Modal onClose={hideAllModalsHandler}>
+              <ChangeLogForm
+                onClose={hideAllModalsHandler}
+                editId={isEditing}
+              />
+            </Modal>
+          )}
 
           <table className={currentThemeTable}>
             <thead className={currentHeaderTheme}>
               <tr>
-                <th>sell</th>
+                <th className={styles.hiddenTd}>sell</th>
                 <th>token</th>
                 <th>quantity</th>
                 <th>buy price</th>

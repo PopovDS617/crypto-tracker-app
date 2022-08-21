@@ -6,6 +6,7 @@ const UiSlice = createSlice({
     theme: 'dark',
     showAddModal: false,
     showSellModal: false,
+    showEditModal: false,
   },
   reducers: {
     changeTheme(state) {
@@ -14,14 +15,23 @@ const UiSlice = createSlice({
     showAddModal(state) {
       state.showAddModal = !state.showAddModal;
       state.showSellModal = false;
+      state.showEditModal = false;
     },
     showSellModal(state) {
       state.showSellModal = !state.showSellModal;
       state.showAddModal = false;
+      state.showEditModal = false;
     },
+    showEditModal(state) {
+      state.showEditModal = !state.showEditModal;
+      state.showAddModal = false;
+      state.showSellModal = false;
+    },
+
     hideAllModals(state) {
       state.showSellModal = false;
       state.showAddModal = false;
+      state.showEditModal = false;
     },
   },
 });

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { globalActions } from '../store/global-slice';
+import { globalActions } from '../../store/global-slice';
 import styles from './NewLogForm.module.css';
 
 const NewLogForm = (props) => {
@@ -8,6 +8,25 @@ const NewLogForm = (props) => {
   const inputQuantityRef = useRef();
   const selectedTokenRef = useRef();
   const tokenList = useSelector((state) => state.global.tokens);
+  const currentTheme = useSelector((state) => state.ui.theme);
+
+  let buttonTheme;
+  let formTheme;
+  let selectTheme;
+  let inputTheme;
+
+  if (currentTheme === 'dark') {
+    buttonTheme = `${styles.addFormBtn} ${styles.addFormBtnLight}`;
+    formTheme = `${styles.newLogContainer} ${styles.newLogContainerDark}`;
+    selectTheme = `${styles.addFormSelect} ${styles.addFormSelectDark}`;
+    inputTheme = `${styles.addFormInput} ${styles.addFormInputDark}`;
+  } else {
+    buttonTheme = `${styles.addFormBtn} ${styles.addFormBtnDark}`;
+    formTheme = `${styles.newLogContainer} ${styles.newLogContainerLight}`;
+    selectTheme = `${styles.addFormSelect} ${styles.addFormSelectLight}`;
+    inputTheme = `${styles.addFormInput} ${styles.addFormInputLight}`;
+  }
+
   const selectOptionsList = [...tokenList];
   const sortedSelectOptionsList = selectOptionsList
     .sort((a, b) => {
@@ -27,7 +46,6 @@ const NewLogForm = (props) => {
     const enteredPrice = +inputPriceRef.current.value;
     const enteredQuantity = +inputQuantityRef.current.value;
     const selectedToken = selectedTokenRef.current.value;
-    console.log(enteredPrice);
 
     dispatch(
       globalActions.addLog({
@@ -41,10 +59,10 @@ const NewLogForm = (props) => {
   };
 
   return (
-    <div className={styles.newLogContainer}>
+    <div className={formTheme}>
       <form onSubmit={addLogHandler}>
         <div className={styles.addFormSelectContainer}>
-          <select ref={selectedTokenRef} className={styles.addFormSelect}>
+          <select ref={selectedTokenRef} className={selectTheme}>
             <option disabled>choose</option>
             {sortedSelectOptionsList}
           </select>
@@ -54,18 +72,18 @@ const NewLogForm = (props) => {
           <input
             placeholder="price"
             ref={inputPriceRef}
-            className={styles.addFormInput}
+            className={inputTheme}
           />
           <input
             placeholder="quantity"
             ref={inputQuantityRef}
-            className={styles.addFormInput}
+            className={inputTheme}
           />
         </div>
 
         <div className={styles.addFormControls}>
-          <button>add</button>
-          <button onClick={props.onClose} type="button">
+          <button className={buttonTheme}>add</button>
+          <button onClick={props.onClose} type="button" className={buttonTheme}>
             close
           </button>
         </div>

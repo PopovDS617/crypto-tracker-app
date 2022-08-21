@@ -24,7 +24,7 @@ const TrackerListItem = (props) => {
       </td>
       <td>{props.status}</td>
       <td>
-        <span className={styles.icon}>
+        <span className={styles.icon} onClick={props.onEdit}>
           <EditIcon />
         </span>
       </td>

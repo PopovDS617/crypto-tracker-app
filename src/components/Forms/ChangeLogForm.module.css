@@ -1,0 +1,97 @@
+.changeLogContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  padding: 1rem;
+}
+
+.changeLogContainerDark {
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+}
+.changeLogContainerLight {
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+}
+
+.tokenName {
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+
+label {
+  text-align: left;
+}
+
+.changeFormInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.changeFormInput {
+  height: 2.1rem;
+  font-size: 1.3rem;
+  font-family: inherit;
+  padding: 0.2rem;
+  outline: none;
+  margin: 0.5rem;
+}
+
+.changeFormInputDark {
+  color: white;
+  border: 1px solid white;
+  background-color: black;
+}
+
+.changeFormInputLight {
+  background-color: white;
+  color: black;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.changeFormControls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.changeFormBtn {
+  box-sizing: border-box;
+  height: 2.1rem;
+  width: 5rem;
+  font-family: inherit;
+  font-size: 1.3rem;
+  margin: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.changeFormBtn:first-child {
+  width: 6rem;
+}
+
+.changeFormBtnDark {
+  color: black;
+  background-color: white;
+}
+.changeFormBtnDark:hover {
+  box-shadow: 0px 0px 0 0.1rem rgb(255, 255, 255);
+  transition: 0.3s ease-in;
+}
+
+.changeFormBtnLight {
+  color: white;
+  background-color: black;
+}
+
+.changeFormBtnLight:hover {
+  box-shadow: 0px 0px 0 0.1rem rgb(0, 0, 0);
+  transition: 0.3s ease-in;
+}

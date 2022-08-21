@@ -1,0 +1,103 @@
+.newLogContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  padding: 1rem;
+}
+
+.newLogContainerDark {
+  background-color: black;
+  border: 2px solid white;
+}
+.newLogContainerLight {
+  background-color: white;
+  border: 2px solid black;
+}
+
+.addFormSelect {
+  padding: 0.2rem;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.3rem;
+  margin: 0.5rem;
+}
+
+.addFormSelectDark {
+  color: white;
+  background-color: black;
+}
+
+.addFormSelecLight {
+  color: black;
+  background-color: white;
+}
+
+.addFormSelect option {
+  color: inherit;
+  background-color: inherit;
+  font-family: inherit;
+  font-size: 1.3rem;
+  margin: 0.5rem;
+}
+
+.addFormSelect :focus-visible {
+  outline: none;
+}
+
+.addFormInput {
+  height: 2.1rem;
+  font-size: 1.3rem;
+  font-family: inherit;
+  padding: 0.2rem;
+  outline: none;
+  margin: 0.5rem;
+}
+
+.addFormInputDark {
+  color: white;
+  border: 1px solid white;
+  background-color: black;
+}
+
+.addFormInputLight {
+  background-color: white;
+  color: black;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.addFormControls {
+  display: flex;
+  justify-content: center;
+}
+
+.addFormBtn {
+  box-sizing: border-box;
+  height: 2.1rem;
+  width: 5rem;
+  font-family: inherit;
+  font-size: 1.3rem;
+  margin: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.addFormBtnLight {
+  color: black;
+  background-color: white;
+}
+.addFormBtnLight:hover {
+  box-shadow: 0px 0px 0 0.1rem rgb(255, 255, 255);
+  transition: 0.3s ease-in;
+}
+
+.addFormBtnDark {
+  color: white;
+  background-color: black;
+}
+
+.addFormBtnDark:hover {
+  box-shadow: 0px 0px 0 0.1rem rgb(0, 0, 0);
+  transition: 0.3s ease-in;
+}

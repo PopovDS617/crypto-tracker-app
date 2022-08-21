@@ -2,10 +2,11 @@
   margin: 0 1rem 0rem;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .headerTitle {
-  width: 80%;
+  margin-left: 2rem;
 }
 .headerTitle h1 {
   font-size: 3rem;
@@ -24,15 +25,30 @@
   width: 10rem;
   font-family: inherit;
   font-size: inherit;
+  border: none;
+}
+
+.btn {
+  transition: all 0.8s;
+  cursor: pointer;
+}
+
+.btnDark:hover {
+  box-shadow: 0px 0px 0 0.1rem rgb(255, 255, 255);
+  transition: 0.3s;
+}
+
+.btnLight:hover {
+  box-shadow: 0px 0px 0 0.1rem rgb(0, 0, 0);
+  transition: 0.3s;
 }
 
 .btnDark {
   background-color: white;
   color: black;
-  transition: all 0.8s;
 }
+
 .btnLight {
   background-color: black;
   color: white;
-  transition: all 0.8s;
 }

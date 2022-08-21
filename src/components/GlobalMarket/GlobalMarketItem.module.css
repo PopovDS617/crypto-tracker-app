@@ -10,10 +10,12 @@
 .global-item-text {
   margin: 0.2rem;
   text-align: center;
+  font-weight: 100;
 }
 .global-item-price {
   margin: 0.2rem;
   font-size: 1.2rem;
+  font-weight: 100;
 }
 
 .profit {
@@ -25,16 +27,18 @@
 }
 
 .shortNameText {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   margin: 0.2rem;
 }
 
 .fullNameText {
   font-size: 1.2rem;
   font-style: italic;
+  font-weight: 100;
 }
 
 .dailyChangeText {
   margin: 0.2rem;
   font-size: 1.2rem;
+  font-weight: 100;
 }

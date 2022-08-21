@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { globalActions } from '../store/global-slice';
+import { globalActions } from '../../store/global-slice';
 import styles from './SellLogForm.module.css';
 
 const SellLogForm = (props) => {
   const [sellPrice, setSellPrice] = useState('');
   const dispatch = useDispatch();
   const logList = useSelector((state) => state.global.logs);
+  const currentTheme = useSelector((state) => state.ui.theme);
+
+  let buttonTheme;
+  let formTheme;
+  let inputTheme;
+
+  if (currentTheme === 'dark') {
+    formTheme = `${styles.sellFormContainer} ${styles.sellFormContainerDark}`;
+    buttonTheme = `${styles.formButton} ${styles.formButtonDark}`;
+    inputTheme = `${styles.sellFormInput} ${styles.sellFormInputDark}`;
+  } else {
+    formTheme = `${styles.sellFormContainer} ${styles.sellFormContainerLight}`;
+    buttonTheme = `${styles.formButton} ${styles.formButtonLight}`;
+    inputTheme = `${styles.sellFormInput} ${styles.sellFormInputLight}`;
+  }
 
   const sellPriceInputHandler = (e) => {
     setSellPrice(e.target.value);
@@ -22,40 +37,26 @@ const SellLogForm = (props) => {
     );
     e.preventDefault();
     props.onClose();
-    console.log({
-      id: sellItem.id,
-      sellPrice: sellPrice,
-    });
   };
 
   return (
-    <div className={styles.sellFormContainer}>
+    <div className={formTheme}>
       <div className={styles.tokenSellFormContainer}>
         <div>Token: {sellItem.tokenName}</div>
         <div>Quantity: {sellItem.quantity}</div>
         <div>Buy price: {sellItem.buyPrice}</div>
-        {/* <div>{sellItem.sellPrice}</div> */}
-        {/* <div>{sellItem.price}</div> */}
-        {/* <div
-          className={sellItem.ratioGainLoss < 0 ? styles.loss : styles.profit}
-        >
-          {sellItem.ratioGainLoss}
-        </div> */}
       </div>
 
       <div className={styles.formContainer}>
         <form onSubmit={sellSubmitHandler}>
           <input
-            className={styles.sellFormInput}
+            className={inputTheme}
             placeholder="enter sell price"
             onChange={sellPriceInputHandler}
           />
-          <button className={styles.formButton}>sell</button>
-          <button
-            onClick={props.onClose}
-            className={styles.formButton}
-            type="button"
-          >
+
+          <button className={buttonTheme}>sell</button>
+          <button onClick={props.onClose} className={buttonTheme} type="button">
             close
           </button>
         </form>

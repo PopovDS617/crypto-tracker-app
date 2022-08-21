@@ -1,0 +1,22 @@
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  padding: 1rem;
+  text-align: left;
+  width: 60%;
+}
+
+.resultContainer div {
+  margin: 0.5rem 1rem;
+}
+
+.profit {
+  color: green;
+}
+
+.loss {
+  color: red;
+}

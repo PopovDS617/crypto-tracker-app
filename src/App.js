@@ -28,24 +28,25 @@ function App() {
       const fetchTimer = setInterval(fetchData, 3000);
       return () => clearTimeout(fetchTimer);
     }
-  }, [fetchData]);
+  }, [fetchData, isLoading]);
 
   return (
     <div className={currentTheme}>
       <div className="header">
         <Header />
       </div>
-      <div className="list">
-        <GlobalMarketList />
-      </div>
-      <main className="main">
-        <div className="tracker">
-          <TrackerList />
+      <div className="info">
+        <div className="list">
+          <GlobalMarketList />
         </div>
-        <div className="aside">
+        <div className="results">
           <ResultList />
         </div>
-      </main>
+      </div>
+
+      <div className="tracker">
+        <TrackerList />
+      </div>
 
       <div className="footer">
         <Footer />

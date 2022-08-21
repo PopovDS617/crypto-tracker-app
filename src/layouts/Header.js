@@ -10,10 +10,10 @@ const Header = () => {
   let buttonStyle;
   if (appTheme === 'dark') {
     buttonText = 'to light mode';
-    buttonStyle = styles.btnDark;
+    buttonStyle = `${styles.btn} ${styles.btnDark}`;
   } else {
     buttonText = 'to dark mode';
-    buttonStyle = styles.btnLight;
+    buttonStyle = `${styles.btn} ${styles.btnLight}`;
   }
 
   const changeThemeHandler = () => {
