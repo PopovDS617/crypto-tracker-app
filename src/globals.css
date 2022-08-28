@@ -41,10 +41,11 @@
 
 .list {
   max-width: 100rem;
+  width: 70%;
 }
 
 .results {
-  width: 25%;
+  width: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
