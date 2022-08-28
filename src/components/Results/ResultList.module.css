@@ -7,7 +7,7 @@
   padding: 1rem;
   text-align: left;
   margin: 1rem 1rem;
-
+  max-width: 18rem;
   font-size: clamp(0.5rem, 0.5rem + 1vw, 1rem);
 }
 

@@ -7,6 +7,7 @@ const UiSlice = createSlice({
     showAddModal: false,
     showSellModal: false,
     showEditModal: false,
+    hasError: false,
   },
   reducers: {
     changeTheme(state) {
@@ -32,6 +33,9 @@ const UiSlice = createSlice({
       state.showSellModal = false;
       state.showAddModal = false;
       state.showEditModal = false;
+    },
+    setError(state, action) {
+      state.hasError = action.payload;
     },
   },
 });

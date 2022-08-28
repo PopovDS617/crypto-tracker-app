@@ -8,7 +8,7 @@ const ChangeLogForm = (props) => {
   const changeItem = logList.find((item) => item.id === props.editId);
   const [values, setValues] = useState({
     buyPrice: changeItem.buyPrice,
-    sellPrice: changeItem.sellPrice,
+    sellPrice: changeItem.sellPrice || 0,
 
     quantity: changeItem.quantity,
   });
@@ -16,7 +16,7 @@ const ChangeLogForm = (props) => {
   const changeInputValueHandler = (event) => {
     setValues((prev) => ({
       ...prev,
-      [event.target.name]: event.target.value,
+      [event.target.name]: Number(event.target.value),
     }));
   };
 
@@ -39,12 +39,14 @@ const ChangeLogForm = (props) => {
 
   const editSubmitHandler = (event) => {
     event.preventDefault();
+    console.log(values);
     dispatch(
       globalActions.changeLog({
         id: changeItem.id,
         buyPrice: values.buyPrice,
         sellPrice: values.sellPrice,
         quantity: values.quantity,
+        status: values.sellPrice === 0 ? 'active' : 'sold',
       })
     );
     props.onClose();
@@ -64,24 +66,25 @@ const ChangeLogForm = (props) => {
               value={values.buyPrice}
               name="buyPrice"
               onChange={changeInputValueHandler}
+              type="number"
             />
           </div>
 
-          {values.sellPrice && (
-            <div>
-              <label htmlFor="sellPrice">sell price</label>
-              <input
-                className={inputTheme}
-                value={values.sellPrice}
-                name="sellPrice"
-                onChange={changeInputValueHandler}
-              />
-            </div>
-          )}
+          <div>
+            <label htmlFor="sellPrice">sell price</label>
+            <input
+              className={inputTheme}
+              value={values.sellPrice}
+              name="sellPrice"
+              onChange={changeInputValueHandler}
+              type="number"
+            />
+          </div>
 
           <div>
             <label htmlFor="quantity">quantity</label>
             <input
+              type="number"
               className={inputTheme}
               value={values.quantity}
               name="quantity"

@@ -73,11 +73,13 @@ const NewLogForm = (props) => {
             placeholder="price"
             ref={inputPriceRef}
             className={inputTheme}
+            type="number"
           />
           <input
             placeholder="quantity"
             ref={inputQuantityRef}
             className={inputTheme}
+            type="number"
           />
         </div>
 

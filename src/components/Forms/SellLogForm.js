@@ -53,6 +53,7 @@ const SellLogForm = (props) => {
             className={inputTheme}
             placeholder="enter sell price"
             onChange={sellPriceInputHandler}
+            type="number"
           />
 
           <button className={buttonTheme}>sell</button>

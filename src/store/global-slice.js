@@ -22,7 +22,7 @@ const initialGlobalMarketState = {
       tokenName: 'SOLUSDT',
       price: 0,
       dailyChange: 0,
-      global: true,
+      global: false,
       displayGlobalShortName: 'SOL',
       displayGlobalFullName: 'Solana',
     },
@@ -56,7 +56,7 @@ const initialGlobalMarketState = {
       tokenName: 'XRPUSDT',
       price: 0,
       dailyChange: 0,
-      global: true,
+      global: false,
       displayGlobalShortName: 'XRP',
       displayGlobalFullName: 'Ripple',
     },
@@ -246,26 +246,37 @@ const globalMarketSlice = createSlice({
   name: 'global',
   initialState: initialGlobalMarketState,
   reducers: {
-    updatePrice(state, action) {
+    updateCurrentPrice(state, action) {
       const updatedArray = [...state.tokens];
 
       for (let i = 0; i < updatedArray.length; i++) {
         for (let x = 0; x < updatedArray.length; x++) {
-          if (
-            updatedArray[i].tokenName === action.payload.currentPrice[x].symbol
-          ) {
+          if (updatedArray[i].tokenName === action.payload[x].symbol) {
             updatedArray[i] = {
               ...updatedArray[i],
-              price: parseInt(action.payload.currentPrice[x].price).toFixed(2),
-              dailyChange: parseInt(
-                action.payload.dailyPrice[x].priceChange
-              ).toFixed(2),
+              price: Number(action.payload[x].price).toFixed(2),
             };
           }
         }
       }
       state.tokens = updatedArray;
     },
+    updateDailyChange(state, action) {
+      const updatedArray = [...state.tokens];
+
+      for (let i = 0; i < updatedArray.length; i++) {
+        for (let x = 0; x < updatedArray.length; x++) {
+          if (updatedArray[i].tokenName === action.payload[x].symbol) {
+            updatedArray[i] = {
+              ...updatedArray[i],
+              dailyChange: Number(action.payload[x].priceChange).toFixed(2),
+            };
+          }
+        }
+      }
+      state.tokens = updatedArray;
+    },
+
     addLog(state, action) {
       const updatedArray = [...state.logs];
       const newLog = {
@@ -316,14 +327,17 @@ const globalMarketSlice = createSlice({
       updatedItem = {
         ...logArray[itemIndex],
         buyPrice: +action.payload.buyPrice,
-        sellPrice: +action.payload.sellPrice,
+        sellPrice:
+          +action.payload.sellPrice == 0 ? null : +action.payload.sellPrice,
         quantity: +action.payload.quantity,
         ratioGainLoss:
           (action.payload.sellPrice - logArray[itemIndex].buyPrice) *
           logArray[itemIndex].quantity,
+        status: action.payload.status,
       };
       logArray[itemIndex] = updatedItem;
       state.logs = logArray;
+      console.log(logArray);
     },
   },
 });

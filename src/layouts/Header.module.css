@@ -9,7 +9,7 @@
   margin-left: 2rem;
 }
 .headerTitle h1 {
-  font-size: 3rem;
+  font-size: clamp(1rem, 0.5rem + 4vh, 4rem);
 }
 
 .headerActions {

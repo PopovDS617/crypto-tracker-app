@@ -1,10 +1,39 @@
 .footer {
   text-align: center;
-  font-weight: 100;
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .footer > a:link,
 a:visited,
 a:active {
   text-decoration: none;
+}
+
+.notification {
+  margin: 1rem 3rem;
+  padding: 0.5rem;
+  font-size: clamp(0.5rem, 0.5rem + 1vw, 1rem);
+  color: white;
+}
+
+.connected {
+  background-color: green;
+}
+
+.error {
+  background-color: red;
+}
+
+.credentials {
+  margin: 1rem 3rem;
+  font-size: clamp(0.5rem, 0.5rem + 1vw, 1.1rem);
 }

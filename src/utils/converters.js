@@ -1,5 +1,6 @@
-//date to norm format
+export const urlConverter = (data, infoType) => {
+  const urlList = data.map((token) => token.tokenName);
+  const url = urlList.join('","');
 
-//profit/loss ratio
-
-//overall calculator
+  return `https://www.binance.com/api/v3/ticker/${infoType}?symbols=["${url}"]`;
+};

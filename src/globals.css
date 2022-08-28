@@ -26,9 +26,6 @@
   transition: all 1s;
 }
 
-.header {
-  height: 8vh;
-}
 .info {
   max-width: 120rem;
   display: -webkit-box;
@@ -38,18 +35,8 @@
   -ms-flex-align: center;
   align-items: center;
   height: 22vh;
-  margin: 2rem auto;
-}
-
-@media (max-width: 850px) {
-  .info {
-    height: 30vh;
-  }
-
-  .tracker {
-    height: 50vh;
-    margin: 2rem auto;
-  }
+  margin: 0.25rem auto;
+  width: 75%;
 }
 
 .list {
@@ -71,9 +58,6 @@
 }
 
 .tracker {
-  height: 50vh;
   margin: 2rem auto;
-}
-.footer {
-  height: 10vh;
+  height: 30vh;
 }

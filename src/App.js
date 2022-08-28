@@ -3,15 +3,17 @@ import GlobalMarketList from './components/GlobalMarket/GlobalMarketList';
 import ResultList from './components/Results/ResultList';
 import Header from './layouts/Header';
 import { useSelector } from 'react-redux';
-
 import React, { useEffect } from 'react';
 import './globals.css';
 
-import useFetch from '../src/hooks/use-fetch';
+import useFetchCurrentPrice from './hooks/use-fetch-current-price';
+import useFetchDailyChange from './hooks/use-fetch-daily-change';
 import Footer from './layouts/Footer';
 
 function App() {
-  const { fetchData, isLoading, isError } = useFetch();
+  const { fetchData: fetchCurrentPrice, isError } = useFetchCurrentPrice();
+
+  const { fetchData: fetchDailyChange } = useFetchDailyChange();
 
   const appTheme = useSelector((state) => state.ui.theme);
 
@@ -23,10 +25,15 @@ function App() {
   }
 
   useEffect(() => {
-    fetchData();
-    const fetchTimer = setInterval(fetchData, 3000);
+    fetchCurrentPrice();
+    const fetchTimer = setInterval(fetchCurrentPrice, 5000);
     return () => clearInterval(fetchTimer);
-  }, [fetchData]);
+  }, [fetchCurrentPrice]);
+  useEffect(() => {
+    fetchDailyChange();
+    const fetchTimer = setInterval(fetchDailyChange, 45000);
+    return () => clearInterval(fetchTimer);
+  }, [fetchDailyChange]);
 
   return (
     <div className={currentTheme}>
