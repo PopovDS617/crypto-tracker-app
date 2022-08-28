@@ -1,20 +1,21 @@
 .trackerList {
   overflow-y: auto;
   max-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 table {
-  width: 90%;
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 0.5rem + 1vw, 1.4rem);
   margin: 0.1rem 1rem;
   border-collapse: separate;
   text-align: center;
   table-layout: fixed;
 }
 
-table td,
-th {
-  padding: 0.1rem;
+table th {
+  padding: 0.4rem 0.6rem;
 }
 
 .table-light th {
@@ -48,7 +49,7 @@ th {
 
 .statusSelect {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: inherit;
   text-align: center;
   font-style: italic;
   background-color: inherit;
@@ -72,24 +73,33 @@ th {
   width: 8rem;
 }
 
-tr td:last-child {
-  border: none;
-}
-table tr td:first-child {
-  border: none;
+.emptyList {
+  font-size: (1rem, 0.5rem + 1vw, 1.4rem);
 }
 
-.emptyList {
-  font-size: 2rem;
+th:last-child {
+  border: none;
+  width: 3rem;
 }
+
+th:first-child {
+  border: none;
+  width: 3rem;
+}
+
+th:nth-child(9) {
+  border: none;
+  width: 3rem;
+}
+
 .addBtn {
   position: relative;
   left: 12%;
   box-sizing: border-box;
   height: 3rem;
-  width: 6rem;
+  width: 8rem;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 0.5rem + 1vw, 1.4rem);
   cursor: pointer;
 }
 

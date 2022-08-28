@@ -11,7 +11,7 @@ import useFetch from '../src/hooks/use-fetch';
 import Footer from './layouts/Footer';
 
 function App() {
-  const { fetchData, isLoading } = useFetch();
+  const { fetchData, isLoading, isError } = useFetch();
 
   const appTheme = useSelector((state) => state.ui.theme);
 
@@ -23,12 +23,10 @@ function App() {
   }
 
   useEffect(() => {
-    if (!isLoading) {
-      fetchData();
-      const fetchTimer = setInterval(fetchData, 3000);
-      return () => clearTimeout(fetchTimer);
-    }
-  }, [fetchData, isLoading]);
+    fetchData();
+    const fetchTimer = setInterval(fetchData, 3000);
+    return () => clearInterval(fetchTimer);
+  }, [fetchData]);
 
   return (
     <div className={currentTheme}>

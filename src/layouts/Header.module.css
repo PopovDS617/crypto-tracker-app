@@ -22,9 +22,9 @@
 .headerActions button {
   box-sizing: border-box;
   height: 3rem;
-  width: 10rem;
+  width: 13rem;
   font-family: inherit;
-  font-size: inherit;
+  font-size: clamp(0.8rem, 0.5rem + 1vw, 1.4rem);
   border: none;
 }
 

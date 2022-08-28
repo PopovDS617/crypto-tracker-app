@@ -6,7 +6,9 @@
   border: 2px solid white;
   padding: 1rem;
   text-align: left;
-  width: 60%;
+  margin: 1rem 1rem;
+
+  font-size: clamp(0.5rem, 0.5rem + 1vw, 1rem);
 }
 
 .resultContainer div {

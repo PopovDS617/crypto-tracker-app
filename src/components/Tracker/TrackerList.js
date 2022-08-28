@@ -127,7 +127,7 @@ const TrackerList = () => {
           <table className={currentThemeTable}>
             <thead className={currentHeaderTheme}>
               <tr>
-                <th className={styles.hiddenTd}>sell</th>
+                <th className={styles.hiddenTd}></th>
                 <th>token</th>
                 <th>quantity</th>
                 <th>buy price</th>
@@ -147,8 +147,8 @@ const TrackerList = () => {
                     <option value="sold">sold</option>
                   </select>
                 </th>
-                <th className={styles.itemChange}>change</th>
-                <th className={styles.itemRemove}>del</th>
+                <th className={styles.itemChange}></th>
+                <th className={styles.itemRemove}></th>
               </tr>
             </thead>
             <tbody>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const useFetch = () => {
   const [isLoading, setIsLoading] = useState(false);
+
   const dispatch = useDispatch();
   const tokenData = useSelector((state) => state.global.tokens);
 
@@ -21,14 +22,16 @@ const useFetch = () => {
     setIsLoading(true);
 
     const currentDataResponse = await fetch(currentPriceUrl);
+
     const currentPrice = await currentDataResponse.json();
     const dailyDataResponse = await fetch(dailyPriceUrl);
+
     const dailyPrice = await dailyDataResponse.json();
 
     dispatch(globalActions.updatePrice({ currentPrice, dailyPrice }));
 
     setIsLoading(false);
-  }, []);
+  }, [currentPriceUrl, dailyPriceUrl, dispatch]);
 
   return { isLoading, fetchData };
 };
