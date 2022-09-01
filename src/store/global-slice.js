@@ -206,7 +206,7 @@ const initialGlobalMarketState = {
     {
       id: Math.random().toFixed(8),
       tokenName: 'TWTUSDT',
-      buyPrice: 0.99,
+      buyPrice: 0.75,
       sellPrice: null,
       quantity: 125,
       ratioGainLoss: 0,
@@ -215,9 +215,9 @@ const initialGlobalMarketState = {
     {
       id: Math.random().toFixed(8),
       tokenName: 'BTCUSDT',
-      buyPrice: 1200,
+      buyPrice: 13500,
       sellPrice: null,
-      quantity: 0.5,
+      quantity: 0.655,
       ratioGainLoss: 0,
       status: 'active',
     },
