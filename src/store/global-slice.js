@@ -328,7 +328,7 @@ const globalMarketSlice = createSlice({
         ...logArray[itemIndex],
         buyPrice: +action.payload.buyPrice,
         sellPrice:
-          +action.payload.sellPrice == 0 ? null : +action.payload.sellPrice,
+          +action.payload.sellPrice === 0 ? null : +action.payload.sellPrice,
         quantity: +action.payload.quantity,
         ratioGainLoss:
           (action.payload.sellPrice - logArray[itemIndex].buyPrice) *

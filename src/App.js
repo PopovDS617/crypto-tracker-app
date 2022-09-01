@@ -11,7 +11,7 @@ import useFetchDailyChange from './hooks/use-fetch-daily-change';
 import Footer from './layouts/Footer';
 
 function App() {
-  const { fetchData: fetchCurrentPrice, isError } = useFetchCurrentPrice();
+  const { fetchData: fetchCurrentPrice } = useFetchCurrentPrice();
 
   const { fetchData: fetchDailyChange } = useFetchDailyChange();
 
