@@ -18,6 +18,8 @@ const GlobalMarketList = () => {
           dailyChange={token.dailyChange}
         />
       );
+    } else {
+      return [];
     }
   });
 
