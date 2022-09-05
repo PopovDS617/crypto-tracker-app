@@ -5,7 +5,7 @@ import useTheme from '../hooks/use-change-theme';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { switchThemeBtn, switchThemeText } = useTheme(styles);
+  const { swi, switchThemeText } = useTheme(styles);
 
   const changeThemeHandler = () => {
     dispatch(UiActions.changeTheme());
