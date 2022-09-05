@@ -1,10 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './ResultList.module.css';
+import useTheme from '../../hooks/use-change-theme';
 
 const ResultList = () => {
   const logs = useSelector((state) => state.global.logs);
   const prices = useSelector((state) => state.global.tokens);
+
+  const { results } = useTheme(styles);
 
   const completedDeals = logs.filter((log) => log.status === 'sold');
   let completedDealsResult = 0;
@@ -42,7 +45,7 @@ const ResultList = () => {
   }
 
   return (
-    <div className={styles.resultContainer}>
+    <div className={results}>
       <div>
         {'Completed deals: '}
         <span className={completedDealsText}>

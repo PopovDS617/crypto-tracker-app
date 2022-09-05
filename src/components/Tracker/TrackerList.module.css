@@ -1,17 +1,18 @@
 .trackerList {
-  overflow-y: auto;
-  max-height: 42vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 table {
-  font-size: clamp(0.8rem, 0.2rem + 1vw, 1.2rem);
+  display: block;
+  font-size: clamp(0.8rem, 0.2rem + 1vw, 1.1rem);
   margin: 0.1rem 1rem;
   border-collapse: separate;
   text-align: center;
   table-layout: fixed;
+  overflow-y: auto;
+  max-height: 40vh;
 }
 
 table th {
@@ -75,7 +76,8 @@ table th {
 }
 
 .emptyList {
-  font-size: (1rem, 0.5rem + 1vw, 1.4rem);
+  padding: 1rem;
+  font-size: clamp(1rem, 0.5rem + 2vw, 1.5rem);
 }
 
 th:last-child {
@@ -94,14 +96,17 @@ th:nth-child(9) {
 }
 
 .addBtn {
+  margin-top: 1rem;
+  font-weight: 900;
   position: relative;
   left: 12%;
   box-sizing: border-box;
   height: 3rem;
   width: 8rem;
   font-family: inherit;
-  font-size: clamp(0.8rem, 0.5rem + 1vw, 1.4rem);
+  font-size: clamp(0.8rem, 0.5rem + 1vw, 1.2rem);
   cursor: pointer;
+  z-index: 999;
 }
 
 .btnDark {

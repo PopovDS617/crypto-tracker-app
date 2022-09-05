@@ -10,12 +10,12 @@
 }
 
 .global-item-text {
-  margin: 0.2rem;
+  margin: 0.1rem;
   text-align: center;
 }
 .global-item-price {
-  margin: 0.2rem;
-  font-size: clamp(0.5rem, 0.5rem + 1vw, 1rem);
+  margin: 0.1rem;
+  font-size: clamp(0.5rem, 0.5rem + 1vw, 0.9rem);
 }
 
 .profit {
@@ -27,16 +27,16 @@
 }
 
 .shortNameText {
-  font-size: clamp(0.5rem, 0.5rem + 1vw, 1.5rem);
-  margin: 0.2rem;
+  font-size: clamp(0.5rem, 0.5rem + 1vw, 1.3rem);
+  margin: 0.1rem;
 }
 
 .fullNameText {
-  font-size: clamp(0.4rem, 0.5rem + 1vw, 1rem);
+  font-size: clamp(0.4rem, 0.5rem + 1vw, 0.9rem);
   font-style: italic;
 }
 
 .dailyChangeText {
   margin: 0.2rem;
-  font-size: clamp(0.5rem, 0.5rem + 1vw, 1rem);
+  font-size: clamp(0.5rem, 0.5rem + 1vw, 0.9rem);
 }

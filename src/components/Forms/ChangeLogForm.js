@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { globalActions } from '../../store/global-slice';
 import styles from './ChangeLogForm.module.css';
+import useTheme from '../../hooks/use-change-theme';
 
 const ChangeLogForm = (props) => {
   const logList = useSelector((state) => state.global.logs);
   const changeItem = logList.find((item) => item.id === props.editId);
+
+  const { changeForm, changeFormInput, changeFormBtn } = useTheme(styles);
+
   const [values, setValues] = useState({
     buyPrice: changeItem.buyPrice,
     sellPrice: changeItem.sellPrice || 0,
@@ -21,21 +25,6 @@ const ChangeLogForm = (props) => {
   };
 
   const dispatch = useDispatch();
-  const currentTheme = useSelector((state) => state.ui.theme);
-
-  let buttonTheme;
-  let formTheme;
-  let inputTheme;
-
-  if (currentTheme === 'dark') {
-    formTheme = `${styles.changeLogContainer} ${styles.changeLogContainerDark}`;
-    buttonTheme = `${styles.changeFormBtn} ${styles.changeFormBtnDark}`;
-    inputTheme = `${styles.changeFormInput} ${styles.changeFormInputDark}`;
-  } else {
-    formTheme = `${styles.changeLogContainer} ${styles.changeLogContainerLight}`;
-    buttonTheme = `${styles.changeFormBtn} ${styles.changeFormBtnLight}`;
-    inputTheme = `${styles.changeFormInput} ${styles.changeFormInputLight}`;
-  }
 
   const editSubmitHandler = (event) => {
     event.preventDefault();
@@ -53,7 +42,7 @@ const ChangeLogForm = (props) => {
   };
 
   return (
-    <div className={formTheme}>
+    <div className={changeForm}>
       <div className={styles.tokenName}>
         <div>{changeItem.tokenName}</div>
       </div>
@@ -62,22 +51,24 @@ const ChangeLogForm = (props) => {
           <div>
             <label htmlFor="buyPrice">buy price</label>
             <input
-              className={inputTheme}
+              className={changeFormInput}
               value={values.buyPrice}
               name="buyPrice"
               onChange={changeInputValueHandler}
               type="number"
+              step="0.00001"
             />
           </div>
 
           <div>
             <label htmlFor="sellPrice">sell price</label>
             <input
-              className={inputTheme}
+              className={changeFormInput}
               value={values.sellPrice}
               name="sellPrice"
               onChange={changeInputValueHandler}
               type="number"
+              step="0.00001"
             />
           </div>
 
@@ -85,16 +76,21 @@ const ChangeLogForm = (props) => {
             <label htmlFor="quantity">quantity</label>
             <input
               type="number"
-              className={inputTheme}
+              className={changeFormInput}
               value={values.quantity}
               name="quantity"
+              step="0.00001"
               onChange={changeInputValueHandler}
             />
           </div>
         </div>
         <div className={styles.changeFormControls}>
-          <button className={buttonTheme}>change</button>
-          <button type="button" onClick={props.onClose} className={buttonTheme}>
+          <button className={changeFormBtn}>change</button>
+          <button
+            type="button"
+            onClick={props.onClose}
+            className={changeFormBtn}
+          >
             close
           </button>
         </div>

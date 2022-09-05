@@ -8,6 +8,7 @@ import { UiActions } from '../../store/ui-slice';
 import NewLogForm from '../Forms/NewLogForm';
 import SellLogForm from '../Forms/SellLogForm';
 import ChangeLogForm from '../Forms/ChangeLogForm';
+import useTheme from '../../hooks/use-change-theme';
 
 const TrackerList = () => {
   const [filterValue, setFilterValue] = useState('all');
@@ -17,10 +18,11 @@ const TrackerList = () => {
   const trackerList = useSelector((state) => state.global.logs);
   const priceList = useSelector((state) => state.global.tokens);
 
-  const appTheme = useSelector((state) => state.ui.theme);
   const isAddModalShown = useSelector((state) => state.ui.showAddModal);
   const isSellModalShown = useSelector((state) => state.ui.showSellModal);
   const isEditModalShown = useSelector((state) => state.ui.showEditModal);
+
+  const { table, tableHead, addBtn } = useTheme(styles);
 
   const showAddModalHandler = () => {
     dispatch(UiActions.showAddModal());
@@ -43,20 +45,6 @@ const TrackerList = () => {
     dispatch(UiActions.showEditModal());
     setIsEditing(id);
   };
-
-  let currentThemeTable;
-  let currentButtonTheme;
-  let currentHeaderTheme;
-
-  if (appTheme === 'dark') {
-    currentThemeTable = styles['table-dark'];
-    currentHeaderTheme = `${styles.stikyHead} ${styles.stikyHeadDark}`;
-    currentButtonTheme = `${styles.addBtn} ${styles.btnDark}`;
-  } else {
-    currentButtonTheme = `${styles.addBtn} ${styles.btnLight}`;
-    currentHeaderTheme = `${styles.stikyHead} ${styles.stikyHeadLight}`;
-    currentThemeTable = styles['table-light'];
-  }
 
   const filterHandler = (e) => {
     setFilterValue(e.target.value);
@@ -124,8 +112,8 @@ const TrackerList = () => {
             </Modal>
           )}
 
-          <table className={currentThemeTable}>
-            <thead className={currentHeaderTheme}>
+          <table className={table}>
+            <thead className={tableHead}>
               <tr>
                 <th className={styles.hiddenTd}></th>
                 <th>token</th>
@@ -157,7 +145,7 @@ const TrackerList = () => {
           </table>
         </div>
         <div className={styles.addLogControls}>
-          <button onClick={showAddModalHandler} className={currentButtonTheme}>
+          <button onClick={showAddModalHandler} className={addBtn}>
             add log
           </button>
         </div>

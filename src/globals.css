@@ -34,7 +34,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 22vh;
+  height: 20vh;
   margin: 0.25rem auto;
   width: 95%;
 }
@@ -60,5 +60,4 @@
 
 .tracker {
   margin: 2rem auto;
-  height: 30vh;
 }

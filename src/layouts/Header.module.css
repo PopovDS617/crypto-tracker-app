@@ -9,7 +9,7 @@
   margin-left: 2rem;
 }
 .headerTitle h1 {
-  font-size: clamp(1rem, 0.5rem + 4vh, 4rem);
+  font-size: clamp(1rem, 0.5rem + 4vh, 3rem);
 }
 
 .headerActions {
@@ -20,11 +20,12 @@
 }
 
 .headerActions button {
+  font-weight: 900;
   box-sizing: border-box;
   height: 3rem;
-  width: 13rem;
+  width: 12rem;
   font-family: inherit;
-  font-size: clamp(0.8rem, 0.5rem + 1vw, 1.4rem);
+  font-size: clamp(0.8rem, 0.5rem + 1vw, 1.2rem);
   border: none;
 }
 

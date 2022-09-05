@@ -1,20 +1,11 @@
 import styles from './Header.module.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { UiActions } from '../store/ui-slice';
+import useTheme from '../hooks/use-change-theme';
 
 const Header = () => {
-  const appTheme = useSelector((state) => state.ui.theme);
   const dispatch = useDispatch();
-
-  let buttonText;
-  let buttonStyle;
-  if (appTheme === 'dark') {
-    buttonText = 'to light mode';
-    buttonStyle = `${styles.btn} ${styles.btnDark}`;
-  } else {
-    buttonText = 'to dark mode';
-    buttonStyle = `${styles.btn} ${styles.btnLight}`;
-  }
+  const { switchThemeBtn, switchThemeText } = useTheme(styles);
 
   const changeThemeHandler = () => {
     dispatch(UiActions.changeTheme());
@@ -26,8 +17,8 @@ const Header = () => {
         <h1>crypto tracker</h1>
       </div>
       <div className={styles.headerActions}>
-        <button className={buttonStyle} onClick={changeThemeHandler}>
-          {buttonText}
+        <button className={switchThemeBtn} onClick={changeThemeHandler}>
+          {switchThemeText}
         </button>
       </div>
     </header>

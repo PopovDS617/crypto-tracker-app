@@ -2,30 +2,15 @@ import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { globalActions } from '../../store/global-slice';
 import styles from './NewLogForm.module.css';
+import useTheme from '../../hooks/use-change-theme';
 
 const NewLogForm = (props) => {
   const inputPriceRef = useRef();
   const inputQuantityRef = useRef();
   const selectedTokenRef = useRef();
   const tokenList = useSelector((state) => state.global.tokens);
-  const currentTheme = useSelector((state) => state.ui.theme);
 
-  let buttonTheme;
-  let formTheme;
-  let selectTheme;
-  let inputTheme;
-
-  if (currentTheme === 'dark') {
-    buttonTheme = `${styles.addFormBtn} ${styles.addFormBtnLight}`;
-    formTheme = `${styles.newLogContainer} ${styles.newLogContainerDark}`;
-    selectTheme = `${styles.addFormSelect} ${styles.addFormSelectDark}`;
-    inputTheme = `${styles.addFormInput} ${styles.addFormInputDark}`;
-  } else {
-    buttonTheme = `${styles.addFormBtn} ${styles.addFormBtnDark}`;
-    formTheme = `${styles.newLogContainer} ${styles.newLogContainerLight}`;
-    selectTheme = `${styles.addFormSelect} ${styles.addFormSelectLight}`;
-    inputTheme = `${styles.addFormInput} ${styles.addFormInputLight}`;
-  }
+  const { newForm, newFormBtn, newFormInput, newFormSelect } = useTheme(styles);
 
   const selectOptionsList = [...tokenList];
   const sortedSelectOptionsList = selectOptionsList
@@ -59,10 +44,10 @@ const NewLogForm = (props) => {
   };
 
   return (
-    <div className={formTheme}>
+    <div className={newForm}>
       <form onSubmit={addLogHandler}>
         <div className={styles.addFormSelectContainer}>
-          <select ref={selectedTokenRef} className={selectTheme}>
+          <select ref={selectedTokenRef} className={newFormSelect}>
             <option disabled>choose</option>
             {sortedSelectOptionsList}
           </select>
@@ -72,20 +57,22 @@ const NewLogForm = (props) => {
           <input
             placeholder="price"
             ref={inputPriceRef}
-            className={inputTheme}
+            className={newFormInput}
             type="number"
+            step="0.00001"
           />
           <input
             placeholder="quantity"
             ref={inputQuantityRef}
-            className={inputTheme}
+            className={newFormInput}
             type="number"
+            step="0.00001"
           />
         </div>
 
         <div className={styles.addFormControls}>
-          <button className={buttonTheme}>add</button>
-          <button onClick={props.onClose} type="button" className={buttonTheme}>
+          <button className={newFormBtn}>add</button>
+          <button onClick={props.onClose} type="button" className={newFormBtn}>
             close
           </button>
         </div>
