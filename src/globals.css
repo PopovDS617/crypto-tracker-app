@@ -8,6 +8,8 @@
   -ms-flex-direction: column;
   flex-direction: column;
   margin: 0;
+
+  z-index: 999;
 }
 
 .layout-dark {
