@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
+import { IModal } from '../models/ui-models';
 
 import styles from './Modal.module.css';
 
-const Backdrop = (props) => {
+const Backdrop = (props: IModal) => {
   return <div className={styles.backdrop} onClick={props.onClose}></div>;
 };
 
-const ModalOverlay = (props) => {
+const ModalOverlay = (props: IModal) => {
   return (
     <div className={styles.modal}>
       <div className={styles.content}>{props.children}</div>
@@ -15,9 +16,9 @@ const ModalOverlay = (props) => {
   );
 };
 
-const portalElement = document.getElementById('overlays');
+const portalElement = document.getElementById('overlays') as HTMLElement;
 
-const Modal = (props) => {
+const Modal = (props: IModal) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(

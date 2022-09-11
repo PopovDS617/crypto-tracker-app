@@ -1,43 +1,46 @@
-import React, { useRef } from 'react';
+import React, { FormEvent, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { globalActions } from '../../store/global-slice';
 import styles from './NewLogForm.module.css';
 import useTheme from '../../hooks/use-change-theme';
+import { RootState } from '../../store';
 
-const NewLogForm = (props) => {
-  const inputPriceRef = useRef();
-  const inputQuantityRef = useRef();
-  const selectedTokenRef = useRef();
-  const tokenList = useSelector((state) => state.global.tokens);
+interface Props {
+  onClose: () => void;
+}
+
+const NewLogForm = (props: Props) => {
+  const inputPriceRef = useRef<HTMLInputElement>(null);
+  const inputQuantityRef = useRef<HTMLInputElement>(null);
+  const selectedTokenRef = useRef<HTMLSelectElement>(null);
+  const tokenList = useSelector((state: RootState) => state.global.tokens);
 
   const { newForm, newFormBtn, newFormInput, newFormSelect } = useTheme(styles);
 
-  const selectOptionsList = [...tokenList];
-  const sortedSelectOptionsList = selectOptionsList
-    .sort((a, b) => {
-      return a.tokenName.localeCompare(b.tokenName);
-    })
+  const notSortedList = [...tokenList];
+  const sortedSelectOptionsList = notSortedList
+    .sort((a, b) => a.tokenName.localeCompare(b.tokenName))
     .map((item) => {
       return (
-        <option key={item.id} value={item.tokenName}>
+        <option key={Math.random() * 10} value={item.tokenName}>
           {item.tokenName}
         </option>
       );
     });
   const dispatch = useDispatch();
 
-  const addLogHandler = (e) => {
+  const addLogHandler = (e: FormEvent) => {
     e.preventDefault();
-    const enteredPrice = +inputPriceRef.current.value;
-    const enteredQuantity = +inputQuantityRef.current.value;
-    const selectedToken = selectedTokenRef.current.value;
+    const enteredPrice = inputPriceRef.current!.value;
+    const enteredQuantity = inputQuantityRef.current!.value;
+    const selectedToken = selectedTokenRef.current!.value;
 
     dispatch(
       globalActions.addLog({
         tokenName: selectedToken,
-        buyPrice: enteredPrice,
+        buyPrice: +enteredPrice,
 
-        quantity: enteredQuantity,
+        quantity: +enteredQuantity,
       })
     );
     props.onClose();

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { globalActions } from '../../store/global-slice';
 import styles from './TrackerList.module.css';
@@ -9,18 +9,25 @@ import NewLogForm from '../Forms/NewLogForm';
 import SellLogForm from '../Forms/SellLogForm';
 import ChangeLogForm from '../Forms/ChangeLogForm';
 import useTheme from '../../hooks/use-change-theme';
+import { RootState } from '../../store';
 
 const TrackerList = () => {
   const [filterValue, setFilterValue] = useState('all');
   const [isSelling, setIsSelling] = useState('');
   const [isEditing, setIsEditing] = useState('');
   const dispatch = useDispatch();
-  const trackerList = useSelector((state) => state.global.logs);
-  const priceList = useSelector((state) => state.global.tokens);
+  const logs = useSelector((state: RootState) => state.global.logs);
+  const priceList = useSelector((state: RootState) => state.global.tokens);
 
-  const isAddModalShown = useSelector((state) => state.ui.showAddModal);
-  const isSellModalShown = useSelector((state) => state.ui.showSellModal);
-  const isEditModalShown = useSelector((state) => state.ui.showEditModal);
+  const isAddModalShown = useSelector(
+    (state: RootState) => state.ui.showAddModal
+  );
+  const isSellModalShown = useSelector(
+    (state: RootState) => state.ui.showSellModal
+  );
+  const isEditModalShown = useSelector(
+    (state: RootState) => state.ui.showEditModal
+  );
 
   const { table, tableHead, addBtn } = useTheme(styles);
 
@@ -32,26 +39,26 @@ const TrackerList = () => {
     dispatch(UiActions.hideAllModals());
   };
 
-  const deleteItemHandler = (id) => {
+  const deleteItemHandler = (id: string) => {
     dispatch(globalActions.deleteLog({ id: id }));
   };
 
-  const showSellModalHandler = (id) => {
+  const showSellModalHandler = (id: string) => {
     dispatch(UiActions.showSellModal());
     setIsSelling(id);
   };
 
-  const showEditModalHandler = (id) => {
+  const showEditModalHandler = (id: string) => {
     dispatch(UiActions.showEditModal());
     setIsEditing(id);
   };
 
-  const filterHandler = (e) => {
+  const filterHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     setFilterValue(e.target.value);
   };
-  let filteredList = [...trackerList];
+  let filteredList = [...logs];
   if (filterValue !== 'all') {
-    filteredList = trackerList.filter((item) => item.status === filterValue);
+    filteredList = logs.filter((item) => item.status === filterValue);
   }
 
   let transformedList = filteredList.map((token) => {
@@ -65,13 +72,9 @@ const TrackerList = () => {
           name={token.tokenName}
           buyPrice={token.buyPrice}
           quantity={token.quantity}
-          price={tokenData.price}
+          price={tokenData?.price ? tokenData.price : 0}
           sellPrice={token.sellPrice === null ? '-' : token.sellPrice}
-          ratioGainLoss={
-            token.status === 'active'
-              ? ((tokenData.price - token.buyPrice) * token.quantity).toFixed(2)
-              : ((token.sellPrice - token.buyPrice) * token.quantity).toFixed(2)
-          }
+          ratioGainLoss={token.ratioGainLoss}
           status={token.status}
           onDelete={deleteItemHandler.bind(null, token.id)}
           onSell={showSellModalHandler.bind(null, token.id)}
@@ -128,7 +131,7 @@ const TrackerList = () => {
                     name="status"
                     className={styles.statusSelect}
                   >
-                    <option value="all" defaultValue={true}>
+                    <option value="all" defaultValue="true">
                       all
                     </option>
                     <option value="active">active</option>

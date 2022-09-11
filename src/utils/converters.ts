@@ -1,4 +1,6 @@
-export const urlConverter = (data, infoType) => {
+import { IToken } from '../models/token-models';
+
+export const urlConverter = (data: IToken[], infoType: string) => {
   const urlList = data.map((token) => token.tokenName);
   const url = urlList.join('","');
 

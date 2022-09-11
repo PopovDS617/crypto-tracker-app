@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { ITrackerState } from '../models/token-models';
 
-const initialGlobalMarketState = {
+const initialGlobalMarketState: ITrackerState = {
   tokens: [
     {
       tokenName: 'BTCUSDT',
@@ -254,7 +255,7 @@ const globalMarketSlice = createSlice({
           if (updatedArray[i].tokenName === action.payload[x].symbol) {
             updatedArray[i] = {
               ...updatedArray[i],
-              price: Number(action.payload[x].price).toFixed(2),
+              price: +action.payload[x].price,
             };
           }
         }
@@ -269,7 +270,7 @@ const globalMarketSlice = createSlice({
           if (updatedArray[i].tokenName === action.payload[x].symbol) {
             updatedArray[i] = {
               ...updatedArray[i],
-              dailyChange: Number(action.payload[x].priceChange).toFixed(2),
+              dailyChange: +action.payload[x].priceChange,
             };
           }
         }

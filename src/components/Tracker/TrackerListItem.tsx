@@ -4,7 +4,22 @@ import DoneIcon from '../../UI/DoneIcon';
 import DeleteIcon from '../../UI/DeleteIcon';
 import EditIcon from '../../UI/EditIcon';
 
-const TrackerListItem = (props) => {
+interface Props {
+  id: string;
+  key: string;
+  name: string;
+  buyPrice: number;
+  quantity: number;
+  price: number;
+  sellPrice: string | number;
+  ratioGainLoss: number;
+  status: string;
+  onDelete: () => void;
+  onSell: () => void;
+  onEdit: () => void;
+}
+
+const TrackerListItem = (props: Props) => {
   return (
     <React.Fragment>
       <td>
@@ -20,7 +35,9 @@ const TrackerListItem = (props) => {
       <td>{props.sellPrice}</td>
       <td>{props.price}</td>
       <td className={props.ratioGainLoss < 0 ? styles.loss : styles.profit}>
-        {props.ratioGainLoss}
+        {props.status === 'active'
+          ? ((props.price - +props.buyPrice) * props.quantity).toFixed(2)
+          : ((+props.sellPrice - +props.buyPrice) * +props.quantity).toFixed(2)}
       </td>
       <td>{props.status}</td>
       <td>
