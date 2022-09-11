@@ -21,19 +21,22 @@ const ResultList = () => {
 
   const activeDeals = logs.filter((log) => log.status === 'active');
   let activeDealsResult = 0;
-  // console.log(activeDeals);
-  // if (activeDeals || []) {
-  //   for (let i = 0; i < activeDeals.length; i++) {
-  //     const tokenData = prices.find(
-  //       (el) => el.tokenName === activeDeals[i].tokenName
-  //     );
+  console.log(activeDeals);
 
-  //     if (tokenData?.price && activeDeals.buyPrice && activeDeals.quantity) {
-  //       activeDealsResult +=
-  //         (tokenData.price - activeDeals.buyPrice) * activeDeals.quantity;
-  //     }
-  //   }
-  // }
+  for (let i = 0; i < activeDeals.length; i++) {
+    const tokenData = prices.find(
+      (el) => el.tokenName === activeDeals[i].tokenName
+    );
+
+    if (
+      tokenData?.price &&
+      activeDeals[i].buyPrice &&
+      activeDeals[i].quantity
+    ) {
+      activeDealsResult +=
+        (tokenData.price - activeDeals[i].buyPrice) * activeDeals[i].quantity;
+    }
+  }
   let completedDealsText;
   let activeDealsText;
   if (completedDealsResult > 0) {

@@ -1,4 +1,4 @@
-import React, { ReactPortal } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { IModal } from '../models/ui-models';
 
