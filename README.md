@@ -1,7 +1,3 @@
-### npm install
-
-<<<<<<< HEAD
 ### npm start
-=======
-## npm start
->>>>>>> redo-in-typescript
+
+### npm start
