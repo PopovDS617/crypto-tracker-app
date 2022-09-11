@@ -9,13 +9,14 @@ import './globals.css';
 import useFetchCurrentPrice from './hooks/use-fetch-current-price';
 import useFetchDailyChange from './hooks/use-fetch-daily-change';
 import Footer from './layouts/Footer';
+import { RootState } from './store';
 
-function App() {
+const App = () => {
   const { fetchData: fetchCurrentPrice } = useFetchCurrentPrice();
 
   const { fetchData: fetchDailyChange } = useFetchDailyChange();
 
-  const appTheme = useSelector((state) => state.ui.theme);
+  const appTheme = useSelector((state: RootState) => state.ui.theme);
 
   let currentTheme;
   if (appTheme === 'dark') {
@@ -58,6 +59,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

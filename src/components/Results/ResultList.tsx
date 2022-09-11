@@ -2,32 +2,41 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './ResultList.module.css';
 import useTheme from '../../hooks/use-change-theme';
+import { RootState } from '../../store';
 
 const ResultList = () => {
-  const logs = useSelector((state) => state.global.logs);
-  const prices = useSelector((state) => state.global.tokens);
+  const logs = useSelector((state: RootState) => state.global.logs);
+  const prices = useSelector((state: RootState) => state.global.tokens);
 
   const { results } = useTheme(styles);
 
   const completedDeals = logs.filter((log) => log.status === 'sold');
   let completedDealsResult = 0;
   for (let i = 0; i < completedDeals.length; i++) {
-    completedDealsResult +=
-      (completedDeals[i].sellPrice - completedDeals[i].buyPrice) *
-      completedDeals[i].quantity;
+    const { sellPrice, buyPrice, quantity } = completedDeals[i];
+    if (sellPrice && buyPrice && quantity) {
+      completedDealsResult += (sellPrice - buyPrice) * quantity;
+    }
   }
 
   const activeDeals = logs.filter((log) => log.status === 'active');
   let activeDealsResult = 0;
+  console.log(activeDeals);
+
   for (let i = 0; i < activeDeals.length; i++) {
     const tokenData = prices.find(
       (el) => el.tokenName === activeDeals[i].tokenName
     );
 
-    activeDealsResult +=
-      (tokenData.price - activeDeals[i].buyPrice) * activeDeals[i].quantity;
+    if (
+      tokenData?.price &&
+      activeDeals[i].buyPrice &&
+      activeDeals[i].quantity
+    ) {
+      activeDealsResult +=
+        (tokenData.price - activeDeals[i].buyPrice) * activeDeals[i].quantity;
+    }
   }
-
   let completedDealsText;
   let activeDealsText;
   if (completedDealsResult > 0) {

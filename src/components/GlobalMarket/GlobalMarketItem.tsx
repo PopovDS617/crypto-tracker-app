@@ -1,7 +1,14 @@
 import styles from './GlobalMarketItem.module.css';
 
-const GlobalMarketItem = (props) => {
-  let dailyChangeDisplay = props.dailyChange;
+interface Props {
+  displayGlobalShortName: string;
+  displayGlobalFullName: string;
+  price: number;
+  dailyChange: number;
+}
+
+const GlobalMarketItem = (props: Props) => {
+  let dailyChangeDisplay = props.dailyChange.toString();
   let dailyChangeColor = styles['global-item-price'];
   if (props.dailyChange > 0) {
     dailyChangeDisplay = `+${props.dailyChange}`;
@@ -15,11 +22,13 @@ const GlobalMarketItem = (props) => {
   return (
     <section className={styles['global-item-wrapper']}>
       <div className={styles['global-item-text']}>
-        <div className={styles.shortNameText}>{props.tokenGlobalShortName}</div>
-        <div className={styles.fullNameText}>{props.tokenGlobalFullName}</div>
+        <div className={styles.shortNameText}>
+          {props.displayGlobalShortName}
+        </div>
+        <div className={styles.fullNameText}>{props.displayGlobalFullName}</div>
       </div>
       <div className={styles['global-item-price']}>
-        {`price: ${props.tokenCurrentPrice}`}
+        {`price: ${props.price}`}
       </div>
       <div className={styles.dailyChangeText}>
         <span>24h:</span>

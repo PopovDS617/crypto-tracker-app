@@ -3,18 +3,23 @@ import GlobalMarketItem from './GlobalMarketItem';
 import { useSelector } from 'react-redux/es/exports';
 
 import styles from './GlobalMarkerList.module.css';
+import { RootState } from '../../store';
 
 const GlobalMarketList = () => {
-  const tokenList = useSelector((state) => state.global.tokens);
+  const tokenList = useSelector((state: RootState) => state.global.tokens);
 
   const listGlobalMarket = tokenList.map((token) => {
     if (token.global) {
       return (
         <GlobalMarketItem
           key={Math.random()}
-          tokenGlobalShortName={token.displayGlobalShortName}
-          tokenGlobalFullName={token.displayGlobalFullName}
-          tokenCurrentPrice={token.price}
+          displayGlobalShortName={
+            token.displayGlobalShortName ? token.displayGlobalShortName : ''
+          }
+          displayGlobalFullName={
+            token.displayGlobalFullName ? token.displayGlobalFullName : ''
+          }
+          price={token.price}
           dailyChange={token.dailyChange}
         />
       );

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { globalActions } from '../store/global-slice';
-import { tokens } from '../data';
+import { tokens } from '../data/data';
 import { urlConverter } from '../utils/converters';
 
 import { useDispatch } from 'react-redux';

@@ -1,9 +1,10 @@
 import styles from './Footer.module.css';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { RootState } from '../store';
 
 const Footer = () => {
-  const errorStatus = useSelector((state) => state.ui.hasError);
+  const errorStatus = useSelector((state: RootState) => state.ui.hasError);
   const [notificationStyle, setNotificationStyle] = useState({
     text: 'connected',
     style: `${styles.notification} ${styles.connected}`,
