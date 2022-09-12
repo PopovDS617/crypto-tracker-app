@@ -8,7 +8,7 @@ import Footer from '../layouts/Footer';
 import { RootState } from '../store/index';
 
 import { useSelector } from 'react-redux';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 const Tracker = () => {
   const { fetchData: fetchCurrentPrice } = useFetchCurrentPrice();

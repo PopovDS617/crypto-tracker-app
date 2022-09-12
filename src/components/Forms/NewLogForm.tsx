@@ -1,4 +1,4 @@
-import React, { FormEvent, useRef } from 'react';
+import React, { FormEvent, useRef, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { globalActions } from '../../store/global-slice';
 import styles from './NewLogForm.module.css';
@@ -18,15 +18,19 @@ const NewLogForm = (props: Props) => {
   const { newForm, newFormBtn, newFormInput, newFormSelect } = useTheme(styles);
 
   const notSortedList = [...tokenList];
-  const sortedSelectOptionsList = notSortedList
-    .sort((a, b) => a.tokenName.localeCompare(b.tokenName))
-    .map((item) => {
-      return (
-        <option key={Math.random() * 10} value={item.tokenName}>
-          {item.tokenName}
-        </option>
-      );
-    });
+  const sortedSelectOptionsList = useMemo(
+    () =>
+      notSortedList
+        .sort((a, b) => a.tokenName.localeCompare(b.tokenName))
+        .map((item) => {
+          return (
+            <option key={Math.random() * 10} value={item.tokenName}>
+              {item.tokenName}
+            </option>
+          );
+        }),
+    []
+  );
   const dispatch = useDispatch();
 
   const addLogHandler = (e: FormEvent) => {

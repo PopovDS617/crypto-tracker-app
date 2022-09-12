@@ -20,6 +20,19 @@ interface Props {
 }
 
 const TrackerListItem = (props: Props) => {
+  let calculatedGainLoss: number;
+  if (props.status === 'active') {
+    calculatedGainLoss = +(
+      (props.price - +props.buyPrice) *
+      props.quantity
+    ).toFixed(2);
+  } else {
+    calculatedGainLoss = +(
+      (+props.sellPrice - props.buyPrice) *
+      props.quantity
+    ).toFixed(2);
+  }
+
   return (
     <React.Fragment>
       <td>
@@ -34,10 +47,8 @@ const TrackerListItem = (props: Props) => {
       <td>{props.buyPrice}</td>
       <td>{props.sellPrice}</td>
       <td>{props.price}</td>
-      <td className={props.ratioGainLoss < 0 ? styles.loss : styles.profit}>
-        {props.status === 'active'
-          ? ((props.price - +props.buyPrice) * props.quantity).toFixed(2)
-          : ((+props.sellPrice - +props.buyPrice) * +props.quantity).toFixed(2)}
+      <td className={calculatedGainLoss < 0 ? styles.loss : styles.profit}>
+        {calculatedGainLoss}
       </td>
       <td>{props.status}</td>
       <td>
