@@ -13,7 +13,7 @@ const Footer = () => {
   useEffect(() => {
     if (errorStatus === true) {
       setNotificationStyle({
-        text: 'error occured',
+        text: 'connection lost',
         style: `${styles.notification} ${styles.error}`,
       });
     } else {
