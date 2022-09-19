@@ -21,7 +21,6 @@ const ResultList = () => {
 
   const activeDeals = logs.filter((log) => log.status === 'active');
   let activeDealsResult = 0;
-  console.log(activeDeals);
 
   for (let i = 0; i < activeDeals.length; i++) {
     const tokenData = prices.find(

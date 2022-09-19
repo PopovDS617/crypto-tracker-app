@@ -1,10 +1,10 @@
-import React, { FormEvent, useRef, useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { FormEvent, useRef, useMemo } from 'react';
+import { useDispatch } from 'react-redux';
 import { globalActions } from '../../store/global-slice';
 import styles from './NewLogForm.module.css';
 import useTheme from '../../hooks/use-change-theme';
-import { RootState } from '../../store';
 
+import { tokens } from '../../data/data';
 interface Props {
   onClose: () => void;
 }
@@ -13,14 +13,12 @@ const NewLogForm = (props: Props) => {
   const inputPriceRef = useRef<HTMLInputElement>(null);
   const inputQuantityRef = useRef<HTMLInputElement>(null);
   const selectedTokenRef = useRef<HTMLSelectElement>(null);
-  const tokenList = useSelector((state: RootState) => state.global.tokens);
 
   const { newForm, newFormBtn, newFormInput, newFormSelect } = useTheme(styles);
 
-  const notSortedList = [...tokenList];
   const sortedSelectOptionsList = useMemo(
     () =>
-      notSortedList
+      tokens
         .sort((a, b) => a.tokenName.localeCompare(b.tokenName))
         .map((item) => {
           return (
