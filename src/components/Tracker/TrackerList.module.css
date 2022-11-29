@@ -106,7 +106,7 @@ th:nth-child(9) {
   font-family: inherit;
   font-size: clamp(0.8rem, 0.5rem + 1vw, 1.2rem);
   cursor: pointer;
-  z-index: 999;
+  z-index: 1;
 }
 
 .btnDark {
