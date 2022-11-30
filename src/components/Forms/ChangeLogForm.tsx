@@ -55,7 +55,7 @@ const ChangeLogForm = (props: Props) => {
       <form onSubmit={editSubmitHandler}>
         <div className={styles.changeFormInputs}>
           <div>
-            <label htmlFor="buyPrice">buy price</label>
+            <label htmlFor="buyPrice">buying price</label>
             <input
               className={changeFormInput}
               value={values.buyPrice}
@@ -67,7 +67,7 @@ const ChangeLogForm = (props: Props) => {
           </div>
 
           <div>
-            <label htmlFor="sellPrice">sell price</label>
+            <label htmlFor="sellPrice">selling price</label>
             <input
               className={changeFormInput}
               value={values.sellPrice}
