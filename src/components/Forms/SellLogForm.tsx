@@ -38,7 +38,7 @@ const SellLogForm = (props: Props) => {
       <div className={styles.tokenSellFormContainer}>
         <div>Token: {sellItem?.tokenName}</div>
         <div>Quantity: {sellItem?.quantity}</div>
-        <div>Buy price: {sellItem?.buyPrice}</div>
+        <div>Buying price: {sellItem?.buyPrice}</div>
       </div>
 
       <div className={styles.formContainer}>
