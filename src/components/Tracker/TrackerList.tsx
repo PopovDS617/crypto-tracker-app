@@ -121,8 +121,8 @@ const TrackerList = () => {
                 <th className={styles.hiddenTd}></th>
                 <th>token</th>
                 <th>quantity</th>
-                <th>buy price</th>
-                <th>sell price</th>
+                <th>buying price</th>
+                <th>selling price</th>
                 <th>current price</th>
                 <th>profit / loss</th>
                 <th>
