@@ -45,7 +45,7 @@ const SellLogForm = (props: Props) => {
         <form onSubmit={sellSubmitHandler}>
           <input
             className={sellFormInput}
-            placeholder="enter sell price"
+            placeholder="enter the selling price"
             onChange={sellPriceInputHandler}
             type="number"
             step="0.00001"
