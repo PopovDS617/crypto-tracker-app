@@ -1,8 +1,8 @@
-export interface IStyles {
+export interface Styles {
   [value: string]: string;
 }
 
-export interface IModal {
+export interface Modal {
   children?: React.ReactNode;
   onClose?: () => void;
 }

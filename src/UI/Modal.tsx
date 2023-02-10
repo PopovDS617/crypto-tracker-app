@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { IModal } from '../models/ui-models';
+import { Modal } from '../models/ui-models';
 
 import styles from './Modal.module.css';
 

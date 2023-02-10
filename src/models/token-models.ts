@@ -1,4 +1,4 @@
-export interface IToken {
+export interface Token {
   tokenName: string;
   price: number;
   dailyChange: number;
@@ -7,7 +7,7 @@ export interface IToken {
   displayGlobalShortName?: string;
 }
 
-export interface ILog {
+export interface Log {
   id: string;
   tokenName: string;
   buyPrice: number;
@@ -17,7 +17,7 @@ export interface ILog {
   status: string;
 }
 
-export interface ITrackerState {
-  tokens: IToken[];
-  logs: ILog[];
+export interface TrackerState {
+  tokens: Token[];
+  logs: Log[];
 }

@@ -1,6 +1,6 @@
-import { IToken } from '../models/token-models';
+import { Token } from '../models/token-models';
 
-export const urlConverter = (data: IToken[], infoType: string) => {
+export const urlConverter = (data: Token[], infoType: string) => {
   const urlList = data.map((token) => token.tokenName);
   const url = urlList.join('","');
 

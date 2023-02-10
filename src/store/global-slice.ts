@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ITrackerState } from '../models/token-models';
+import { TrackerState } from '../models/token-models';
 
-const initialGlobalMarketState: ITrackerState = {
+const initialGlobalMarketState: TrackerState = {
   tokens: [
     {
       tokenName: 'BTCUSDT',
