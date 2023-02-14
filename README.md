@@ -1,3 +1,13 @@
-### npm install
+## DEMO - https://crypto-trkr.netlify.app/
 
-### npm start
+
+## Getting Started
+#### `1. npm install`
+
+#### `2. npm run dev`
+
+<br>
+
+## TO DO:
+
+to be added later 
