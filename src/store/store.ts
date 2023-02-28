@@ -1,15 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import globalMarketReducer from './global-slice';
-
-import UiReducer from './ui-slice';
+import trackerReducer from './slices/tracker-slice';
+import UiReducer from './slices/ui-slice';
 
 const store = configureStore({
   reducer: {
-    global: globalMarketReducer,
-
+    global: trackerReducer,
     ui: UiReducer,
   },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 export default store;

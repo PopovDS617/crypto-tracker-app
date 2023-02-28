@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './ResultList.module.css';
 import useTheme from '../../hooks/use-change-theme';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 const ResultList = () => {
   const logs = useSelector((state: RootState) => state.global.logs);

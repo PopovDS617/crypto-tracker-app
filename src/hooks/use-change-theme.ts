@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '../store';
+import { useAppSelector } from '../store/hooks';
+import { RootState } from '../store/store';
 import { Styles } from '../models/ui-models';
 
 const useTheme = (module: Styles) => {
-  const appTheme = useSelector((state: RootState) => state.ui.theme);
+  const appTheme = useAppSelector((state) => state.ui.theme);
   let currentTheme;
   const darkStyles = {
     results: `${module.resultContainer} ${module.resultContainerDark}`,

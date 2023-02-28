@@ -1,9 +1,9 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { globalActions } from '../../store/global-slice';
+import { globalActions } from '../../store/slices/tracker-slice';
 import styles from './ChangeLogForm.module.css';
 import useTheme from '../../hooks/use-change-theme';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 interface Props {
   onClose: () => void;

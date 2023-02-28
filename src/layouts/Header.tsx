@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 import { useDispatch } from 'react-redux';
-import { UiActions } from '../store/ui-slice';
+import { UiActions } from '../store/slices/ui-slice';
 import useTheme from '../hooks/use-change-theme';
 
 const Header = () => {

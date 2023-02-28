@@ -5,9 +5,7 @@ import Header from '../layouts/Header';
 import useFetchCurrentPrice from '../hooks/use-fetch-current-price';
 import useFetchDailyChange from '../hooks/use-fetch-daily-change';
 import Footer from '../layouts/Footer';
-import { RootState } from '../store/index';
-
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../store/hooks';
 import { useEffect } from 'react';
 
 const Tracker = () => {
@@ -15,7 +13,7 @@ const Tracker = () => {
 
   const { fetchData: fetchDailyChange } = useFetchDailyChange();
 
-  const appTheme = useSelector((state: RootState) => state.ui.theme);
+  const appTheme = useAppSelector((state) => state.ui.theme);
 
   let currentTheme;
   if (appTheme === 'dark') {

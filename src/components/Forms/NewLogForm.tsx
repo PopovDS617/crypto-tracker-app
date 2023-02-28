@@ -1,6 +1,6 @@
 import { FormEvent, useRef, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import { globalActions } from '../../store/global-slice';
+import { globalActions } from '../../store/slices/tracker-slice';
 import styles from './NewLogForm.module.css';
 import useTheme from '../../hooks/use-change-theme';
 

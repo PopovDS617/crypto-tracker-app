@@ -1,15 +1,15 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { globalActions } from '../../store/global-slice';
+import { globalActions } from '../../store/slices/tracker-slice';
 import styles from './TrackerList.module.css';
 import TrackerListItem from './TrackerListItem';
-import Modal from '../../UI/Modal';
-import { UiActions } from '../../store/ui-slice';
+import ModalWindow from '../../UI/Modal';
+import { UiActions } from '../../store/slices/ui-slice';
 import NewLogForm from '../Forms/NewLogForm';
 import SellLogForm from '../Forms/SellLogForm';
 import ChangeLogForm from '../Forms/ChangeLogForm';
 import useTheme from '../../hooks/use-change-theme';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 const TrackerList = () => {
   const [filterValue, setFilterValue] = useState('all');
@@ -97,22 +97,22 @@ const TrackerList = () => {
       <section>
         <div className={styles.trackerList}>
           {isAddModalShown && (
-            <Modal onClose={hideAllModalsHandler}>
+            <ModalWindow onClose={hideAllModalsHandler}>
               <NewLogForm onClose={hideAllModalsHandler} />
-            </Modal>
+            </ModalWindow>
           )}
           {isSellModalShown && (
-            <Modal onClose={hideAllModalsHandler}>
+            <ModalWindow onClose={hideAllModalsHandler}>
               <SellLogForm onClose={hideAllModalsHandler} sellId={isSelling} />
-            </Modal>
+            </ModalWindow>
           )}
           {isEditModalShown && (
-            <Modal onClose={hideAllModalsHandler}>
+            <ModalWindow onClose={hideAllModalsHandler}>
               <ChangeLogForm
                 onClose={hideAllModalsHandler}
                 editId={isEditing}
               />
-            </Modal>
+            </ModalWindow>
           )}
 
           <table className={table}>

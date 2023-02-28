@@ -3,7 +3,7 @@ import GlobalMarketItem from './GlobalMarketItem';
 import { useSelector } from 'react-redux/es/exports';
 
 import styles from './GlobalMarkerList.module.css';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 const GlobalMarketList = () => {
   const tokenList = useSelector((state: RootState) => state.global.tokens);

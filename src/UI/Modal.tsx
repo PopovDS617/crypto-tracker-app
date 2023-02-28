@@ -4,11 +4,11 @@ import { Modal } from '../models/ui-models';
 
 import styles from './Modal.module.css';
 
-const Backdrop = (props: IModal) => {
+const Backdrop = (props: Modal) => {
   return <div className={styles.backdrop} onClick={props.onClose}></div>;
 };
 
-const ModalOverlay = (props: IModal) => {
+const ModalOverlay = (props: Modal) => {
   return (
     <div className={styles.modal}>
       <div className={styles.content}>{props.children}</div>
@@ -18,7 +18,7 @@ const ModalOverlay = (props: IModal) => {
 
 const portalElement = document.getElementById('overlays') as HTMLElement;
 
-const Modal = (props: IModal) => {
+const ModalWindow = (props: Modal) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
@@ -33,4 +33,4 @@ const Modal = (props: IModal) => {
   );
 };
 
-export default Modal;
+export default ModalWindow;
