@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+
 import { globalActions } from '../../store/slices/tracker-slice';
 import styles from './TrackerList.module.css';
 import TrackerListItem from './TrackerListItem';
@@ -9,25 +9,19 @@ import NewLogForm from '../Forms/NewLogForm';
 import SellLogForm from '../Forms/SellLogForm';
 import ChangeLogForm from '../Forms/ChangeLogForm';
 import useTheme from '../../hooks/use-change-theme';
-import { RootState } from '../../store/store';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
 
 const TrackerList = () => {
   const [filterValue, setFilterValue] = useState('all');
   const [isSelling, setIsSelling] = useState('');
   const [isEditing, setIsEditing] = useState('');
-  const dispatch = useDispatch();
-  const logs = useSelector((state: RootState) => state.global.logs);
-  const priceList = useSelector((state: RootState) => state.global.tokens);
+  const dispatch = useAppDispatch();
+  const logs = useAppSelector((state) => state.global.logs);
+  const priceList = useAppSelector((state) => state.global.tokens);
 
-  const isAddModalShown = useSelector(
-    (state: RootState) => state.ui.showAddModal
-  );
-  const isSellModalShown = useSelector(
-    (state: RootState) => state.ui.showSellModal
-  );
-  const isEditModalShown = useSelector(
-    (state: RootState) => state.ui.showEditModal
-  );
+  const isAddModalShown = useAppSelector((state) => state.ui.showAddModal);
+  const isSellModalShown = useAppSelector((state) => state.ui.showSellModal);
+  const isEditModalShown = useAppSelector((state) => state.ui.showEditModal);
 
   const { table, tableHead, addBtn } = useTheme(styles);
 
