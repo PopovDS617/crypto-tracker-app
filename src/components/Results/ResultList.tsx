@@ -1,12 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../store/hooks';
 import styles from './ResultList.module.css';
 import useTheme from '../../hooks/use-theme';
-import { RootState } from '../../store/store';
 
 const ResultList = () => {
-  const logs = useSelector((state: RootState) => state.global.logs);
-  const prices = useSelector((state: RootState) => state.global.tokens);
+  const logs = useAppSelector((state) => state.global.logs);
+  const prices = useAppSelector((state) => state.global.tokens);
 
   const { results } = useTheme(styles);
 

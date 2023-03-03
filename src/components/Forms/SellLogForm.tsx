@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { globalActions } from '../../store/slices/tracker-slice';
 import styles from './SellLogForm.module.css';
 import useTheme from '../../hooks/use-theme';
@@ -12,8 +12,8 @@ interface Props {
 
 const SellLogForm = (props: Props) => {
   const [sellPrice, setSellPrice] = useState('');
-  const dispatch = useDispatch();
-  const logList = useSelector((state: RootState) => state.global.logs);
+  const dispatch = useAppDispatch();
+  const logList = useAppSelector((state) => state.global.logs);
 
   const { sellForm, sellFormBtn, sellFormInput } = useTheme(styles);
 
