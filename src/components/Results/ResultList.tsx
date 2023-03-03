@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './ResultList.module.css';
-import useTheme from '../../hooks/use-change-theme';
+import useTheme from '../../hooks/use-theme';
 import { RootState } from '../../store/store';
 
 const ResultList = () => {

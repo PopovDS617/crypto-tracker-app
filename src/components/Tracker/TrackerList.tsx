@@ -3,12 +3,12 @@ import React, { ChangeEvent, useState } from 'react';
 import { globalActions } from '../../store/slices/tracker-slice';
 import styles from './TrackerList.module.css';
 import TrackerListItem from './TrackerListItem';
-import ModalWindow from '../../UI/Modal';
+import ModalWindow from '../../UI/Modal/Modal';
 import { UiActions } from '../../store/slices/ui-slice';
 import NewLogForm from '../Forms/NewLogForm';
 import SellLogForm from '../Forms/SellLogForm';
 import ChangeLogForm from '../Forms/ChangeLogForm';
-import useTheme from '../../hooks/use-change-theme';
+import useTheme from '../../hooks/use-theme';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 
 const TrackerList = () => {

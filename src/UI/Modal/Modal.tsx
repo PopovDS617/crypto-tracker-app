@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import ReactDOM from 'react-dom';
-import { Modal } from '../models/ui-models';
+import {} from '../../models/ui-models';
 
 import styles from './Modal.module.css';
 
-const Backdrop = (props: Modal) => {
+interface Props {
+  onClose?: () => void;
+  children?: React.ReactNode;
+}
+
+const Backdrop = (props: Props) => {
   return <div className={styles.backdrop} onClick={props.onClose}></div>;
 };
 
-const ModalOverlay = (props: Modal) => {
+const ModalOverlay = (props: Props) => {
   return (
     <div className={styles.modal}>
       <div className={styles.content}>{props.children}</div>
@@ -18,7 +23,7 @@ const ModalOverlay = (props: Modal) => {
 
 const portalElement = document.getElementById('overlays') as HTMLElement;
 
-const ModalWindow = (props: Modal) => {
+const ModalWindow = (props: Props) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(

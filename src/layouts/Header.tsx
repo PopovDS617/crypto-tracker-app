@@ -1,10 +1,10 @@
 import styles from './Header.module.css';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../store/hooks';
 import { UiActions } from '../store/slices/ui-slice';
-import useTheme from '../hooks/use-change-theme';
+import useTheme from '../hooks/use-theme';
 
 const Header = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { switchThemeBtn, switchThemeText } = useTheme(styles);
 
   const changeThemeHandler = () => {
@@ -12,7 +12,7 @@ const Header = () => {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={styles.headerContainer}>
       <div className={styles.headerTitle}>
         <h1>crypto tracker</h1>
       </div>

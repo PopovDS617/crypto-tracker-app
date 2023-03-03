@@ -1,4 +1,4 @@
-import styles from './GlobalMarketItem.module.css';
+import styles from './MarketItem.module.css';
 
 interface Props {
   displayGlobalShortName: string;

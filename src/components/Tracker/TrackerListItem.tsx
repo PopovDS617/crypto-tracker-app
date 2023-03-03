@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './TrackerListItem.module.css';
-import DoneIcon from '../../UI/DoneIcon';
-import DeleteIcon from '../../UI/DeleteIcon';
-import EditIcon from '../../UI/EditIcon';
+import DoneIcon from '../../UI/Icons/DoneIcon';
+import DeleteIcon from '../../UI/Icons/DeleteIcon';
+import EditIcon from '../../UI/Icons/EditIcon';
 
 interface Props {
   id: string;

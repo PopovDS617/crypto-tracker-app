@@ -1,12 +1,11 @@
-.header {
+.headerContainer {
   margin: 0 1rem 0rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
 
 .headerTitle {
-  margin-left: 2rem;
+  flex: 1;
+  text-align: center;
 }
 .headerTitle h1 {
   font-size: clamp(1rem, 0.5rem + 4vh, 3rem);
@@ -15,7 +14,7 @@
 .headerActions {
   display: flex;
   align-self: center;
-  justify-content: center;
+  justify-content: flex-end;
   width: 20%;
 }
 

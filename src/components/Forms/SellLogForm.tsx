@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { globalActions } from '../../store/slices/tracker-slice';
 import styles from './SellLogForm.module.css';
-import useTheme from '../../hooks/use-change-theme';
+import useTheme from '../../hooks/use-theme';
 import { RootState } from '../../store/store';
 
 interface Props {

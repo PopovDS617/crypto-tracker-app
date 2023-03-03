@@ -1,17 +1,16 @@
 import React from 'react';
-import GlobalMarketItem from './GlobalMarketItem';
-import { useSelector } from 'react-redux/es/exports';
+import MarketItem from './MarketItem';
 
-import styles from './GlobalMarkerList.module.css';
-import { RootState } from '../../store/store';
+import { useAppSelector } from '../../store/hooks';
+import styles from './MarkerList.module.css';
 
-const GlobalMarketList = () => {
-  const tokenList = useSelector((state: RootState) => state.global.tokens);
+const MarketList = () => {
+  const tokenList = useAppSelector((state) => state.global.tokens);
 
   const listGlobalMarket = tokenList.map((token) => {
     if (token.global) {
       return (
-        <GlobalMarketItem
+        <MarketItem
           key={Math.random()}
           displayGlobalShortName={
             token.displayGlobalShortName ? token.displayGlobalShortName : ''
@@ -35,4 +34,4 @@ const GlobalMarketList = () => {
   );
 };
 
-export default GlobalMarketList;
+export default MarketList;

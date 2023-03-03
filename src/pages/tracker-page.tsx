@@ -1,18 +1,16 @@
-import TrackerList from '../components/Tracker/TrackerList';
-import GlobalMarketList from '../components/GlobalMarket/GlobalMarketList';
-import ResultList from '../components/Results/ResultList';
 import Header from '../layouts/Header';
 import useFetchCurrentPrice from '../hooks/use-fetch-current-price';
 import useFetchDailyChange from '../hooks/use-fetch-daily-change';
 import Footer from '../layouts/Footer';
 import { useAppSelector } from '../store/hooks';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Sidebar from '../components/Sidebar/Sidebar';
+import Content from '../components/Content/Content';
 
 const Tracker = () => {
   const { fetchData: fetchCurrentPrice } = useFetchCurrentPrice();
-
   const { fetchData: fetchDailyChange } = useFetchDailyChange();
-
+  const [currentWindow, setCurrentWindow] = useState('market');
   const appTheme = useAppSelector((state) => state.ui.theme);
 
   let currentTheme;
@@ -34,21 +32,11 @@ const Tracker = () => {
   }, [fetchDailyChange]);
   return (
     <div className={currentTheme}>
+      <Sidebar />
       <div className="header">
         <Header />
       </div>
-      <div className="info">
-        <div className="list">
-          <GlobalMarketList />
-        </div>
-        <div className="results">
-          <ResultList />
-        </div>
-      </div>
-
-      <div className="tracker">
-        <TrackerList />
-      </div>
+      <Content currentWindow={currentWindow} />
 
       <div className="footer">
         <Footer />

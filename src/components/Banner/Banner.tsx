@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import MovingText from './MovingText';
-import BlurLayer from '../../UI/BlurLayer';
+import BlurLayer from '../../UI/Blur/BlurLayer';
 
 function shuffleArray(arg: string) {
   const array = arg.split('');
