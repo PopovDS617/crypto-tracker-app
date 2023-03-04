@@ -52,16 +52,22 @@ const ResultList = () => {
   }
 
   return (
-    <div className={results}>
-      <div>
-        {'Completed deals: '}
-        <span className={completedDealsText}>
-          {completedDealsResult.toFixed(2)}
-        </span>
-      </div>
-      <div>
-        {'Current deals: '}
-        <span className={activeDealsText}>{activeDealsResult.toFixed(2)}</span>
+    <div className="info">
+      <div className="results">
+        <div className={results}>
+          <div>
+            {'Completed deals: '}
+            <span className={completedDealsText}>
+              {completedDealsResult.toFixed(2)}
+            </span>
+          </div>
+          <div>
+            {'Current deals: '}
+            <span className={activeDealsText}>
+              {activeDealsResult.toFixed(2)}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

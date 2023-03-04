@@ -1,4 +1,4 @@
-import { TrackerState } from '../models/token-models';
+import { TrackerState } from '../models/tracker-models';
 
 export const initialTrackerState: TrackerState = {
   tokens: [

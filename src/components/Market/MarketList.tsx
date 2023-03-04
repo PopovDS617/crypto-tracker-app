@@ -28,9 +28,11 @@ const MarketList = () => {
   });
 
   return (
-    <React.Fragment>
-      <div className={styles['global-list']}>{listGlobalMarket}</div>
-    </React.Fragment>
+    <div className="info">
+      <div className="list">
+        <div className={styles['global-list']}>{listGlobalMarket}</div>
+      </div>
+    </div>
   );
 };
 

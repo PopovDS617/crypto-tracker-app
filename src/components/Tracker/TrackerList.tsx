@@ -87,7 +87,7 @@ const TrackerList = () => {
   );
 
   return (
-    <React.Fragment>
+    <div className="tracker">
       <section>
         <div className={styles.trackerList}>
           {isAddModalShown && (
@@ -147,7 +147,7 @@ const TrackerList = () => {
           </button>
         </div>
       </section>
-    </React.Fragment>
+    </div>
   );
 };
 

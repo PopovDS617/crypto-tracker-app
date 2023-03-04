@@ -11,25 +11,9 @@ interface Props {
 const Content = (props: Props) => {
   return (
     <div className={styles['content-container']}>
-      {props.currentWindow === 'market' && (
-        <div className="info">
-          <div className="list">
-            <MarketList />
-          </div>
-        </div>
-      )}
-      {props.currentWindow === 'results' && (
-        <div className="info">
-          <div className="results">
-            <ResultList />
-          </div>
-        </div>
-      )}
-      {props.currentWindow === 'tracker' && (
-        <div className="tracker">
-          <TrackerList />
-        </div>
-      )}
+      {props.currentWindow === 'market' && <MarketList />}
+      {props.currentWindow === 'results' && <ResultList />}
+      {props.currentWindow === 'tracker' && <TrackerList />}
     </div>
   );
 };

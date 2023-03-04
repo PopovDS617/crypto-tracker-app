@@ -32,10 +32,10 @@ const Tracker = () => {
   }, [fetchDailyChange]);
   return (
     <div className={currentTheme}>
-      <Sidebar />
       <div className="header">
         <Header />
       </div>
+      <Sidebar />
       <Content currentWindow={currentWindow} />
 
       <div className="footer">
