@@ -3,17 +3,16 @@ import TrackerList from '../Tracker/TrackerList';
 import MarketList from '../Market/MarketList';
 import ResultList from '../Results/ResultList';
 import React from 'react';
+import { useAppSelector } from '../../store/hooks';
 
-interface Props {
-  currentWindow: string;
-}
+const Content = () => {
+  const currentPage = useAppSelector((state) => state.ui.currentPageShown);
 
-const Content = (props: Props) => {
   return (
     <div className={styles['content-container']}>
-      {props.currentWindow === 'market' && <MarketList />}
-      {props.currentWindow === 'results' && <ResultList />}
-      {props.currentWindow === 'tracker' && <TrackerList />}
+      {currentPage === 'market' && <MarketList />}
+      {currentPage === 'results' && <ResultList />}
+      {currentPage === 'tracker' && <TrackerList />}
     </div>
   );
 };

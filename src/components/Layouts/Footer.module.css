@@ -2,13 +2,12 @@
   text-align: center;
   position: fixed;
   bottom: 0;
-
   width: 100%;
 }
 
 .footer-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -31,9 +30,4 @@ a:active {
 
 .error {
   background-color: red;
-}
-
-.credentials {
-  margin: 1rem 3rem;
-  font-size: clamp(0.5rem, 0.5rem + 1vw, 1.1rem);
 }

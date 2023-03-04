@@ -1,28 +1,26 @@
 .headerContainer {
-  margin: 0 1rem 0rem;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .headerTitle {
-  flex: 1;
-  text-align: center;
+  margin-right: 2rem;
 }
-.headerTitle h1 {
+.headerTitle h2 {
+  padding: 0;
+  margin: 0;
   font-size: clamp(1rem, 0.5rem + 4vh, 3rem);
 }
 
 .headerActions {
-  display: flex;
-  align-self: center;
-  justify-content: flex-end;
-  width: 20%;
+  padding: 20px;
 }
 
 .headerActions button {
   font-weight: 900;
   box-sizing: border-box;
-  height: 3rem;
-  width: 12rem;
+  padding: 7px;
   font-family: inherit;
   font-size: clamp(0.8rem, 0.5rem + 1vw, 1.2rem);
   border: none;
@@ -33,16 +31,6 @@
   cursor: pointer;
 }
 
-.btnDark:hover {
-  box-shadow: 0px 0px 0 0.1rem rgb(255, 255, 255);
-  transition: 0.3s;
-}
-
-.btnLight:hover {
-  box-shadow: 0px 0px 0 0.1rem rgb(0, 0, 0);
-  transition: 0.3s;
-}
-
 .btnDark {
   background-color: white;
   color: black;
@@ -51,4 +39,13 @@
 .btnLight {
   background-color: black;
   color: white;
+}
+.btnDark:hover {
+  box-shadow: 0px 0px 0 0.1rem rgb(255, 255, 255);
+  transition: 0.3s;
+}
+
+.btnLight:hover {
+  box-shadow: 0px 0px 0 0.1rem rgb(0, 0, 0);
+  transition: 0.3s;
 }

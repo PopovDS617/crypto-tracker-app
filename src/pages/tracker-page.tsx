@@ -1,7 +1,7 @@
-import Header from '../layouts/Header';
+import Header from '../components/Layouts/Header';
 import useFetchCurrentPrice from '../hooks/use-fetch-current-price';
 import useFetchDailyChange from '../hooks/use-fetch-daily-change';
-import Footer from '../layouts/Footer';
+import Footer from '../components/Layouts/Footer';
 import { useAppSelector } from '../store/hooks';
 import { useEffect, useState } from 'react';
 import Sidebar from '../components/Sidebar/Sidebar';
@@ -10,7 +10,7 @@ import Content from '../components/Content/Content';
 const Tracker = () => {
   const { fetchData: fetchCurrentPrice } = useFetchCurrentPrice();
   const { fetchData: fetchDailyChange } = useFetchDailyChange();
-  const [currentWindow, setCurrentWindow] = useState('market');
+
   const appTheme = useAppSelector((state) => state.ui.theme);
 
   let currentTheme;
@@ -36,7 +36,7 @@ const Tracker = () => {
         <Header />
       </div>
       <Sidebar />
-      <Content currentWindow={currentWindow} />
+      <Content />
 
       <div className="footer">
         <Footer />

@@ -23,7 +23,8 @@ const TrackerList = () => {
   const isSellModalShown = useAppSelector((state) => state.ui.showSellModal);
   const isEditModalShown = useAppSelector((state) => state.ui.showEditModal);
 
-  const { table, tableHead, addBtn } = useTheme(styles);
+  const { tableContainer, tableHead, tableBody, tableRow, addBtn } =
+    useTheme(styles);
 
   const showAddModalHandler = () => {
     dispatch(UiActions.showAddModal());
@@ -59,10 +60,9 @@ const TrackerList = () => {
     const tokenData = priceList.find((el) => el.tokenName === token.tokenName);
 
     return (
-      <tr key={Math.random().toFixed(8)}>
+      <div key={Math.random().toFixed(8)} className={tableRow}>
         <TrackerListItem
           id={token.id}
-          key={Math.random().toFixed(8)}
           name={token.tokenName}
           buyPrice={token.buyPrice}
           quantity={token.quantity}
@@ -74,7 +74,7 @@ const TrackerList = () => {
           onSell={showSellModalHandler.bind(null, token.id)}
           onEdit={showEditModalHandler.bind(null, token.id)}
         />
-      </tr>
+      </div>
     );
   });
 
@@ -109,37 +109,36 @@ const TrackerList = () => {
             </ModalWindow>
           )}
 
-          <table className={table}>
-            <thead className={tableHead}>
-              <tr>
-                <th className={styles.hiddenTd}></th>
-                <th>token</th>
-                <th>quantity</th>
-                <th>buying price</th>
-                <th>selling price</th>
-                <th>current price</th>
-                <th>profit / loss</th>
-                <th>
-                  <select
-                    onChange={filterHandler}
-                    name="status"
-                    className={styles.statusSelect}
-                  >
-                    <option value="all" defaultValue="true">
-                      all
-                    </option>
-                    <option value="active">active</option>
-                    <option value="sold">sold</option>
-                  </select>
-                </th>
-                <th className={styles.itemChange}></th>
-                <th className={styles.itemRemove}></th>
-              </tr>
-            </thead>
-            <tbody>
+          <div className={tableContainer}>
+            <div className={tableHead}>
+              <div></div>
+              <div>token</div>
+              <div>quantity</div>
+              <div>buying price</div>
+              <div>selling price</div>
+              <div>current price</div>
+              <div>profit / loss</div>
+              <div>
+                <select
+                  onChange={filterHandler}
+                  name="status"
+                  className={styles.statusSelect}
+                >
+                  <option value="all" defaultValue="true">
+                    all
+                  </option>
+                  <option value="active">active</option>
+                  <option value="sold">sold</option>
+                </select>
+              </div>
+              <div></div>
+              <div></div>
+            </div>
+
+            <div className={tableBody}>
               {transformedList.length >= 1 ? transformedList : emptyList}
-            </tbody>
-          </table>
+            </div>
+          </div>
         </div>
         <div className={styles.addLogControls}>
           <button onClick={showAddModalHandler} className={addBtn}>

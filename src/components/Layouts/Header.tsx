@@ -1,7 +1,7 @@
 import styles from './Header.module.css';
-import { useAppDispatch } from '../store/hooks';
-import { UiActions } from '../store/slices/ui-slice';
-import useTheme from '../hooks/use-theme';
+import { useAppDispatch } from '../../store/hooks';
+import { UiActions } from '../../store/slices/ui-slice';
+import useTheme from '../../hooks/use-theme';
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className={styles.headerContainer}>
       <div className={styles.headerTitle}>
-        <h1>crypto tracker</h1>
+        <h2>crypto tracker</h2>
       </div>
       <div className={styles.headerActions}>
         <button className={switchThemeBtn} onClick={changeThemeHandler}>

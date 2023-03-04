@@ -1,5 +1,5 @@
 import styles from './Footer.module.css';
-import { useAppSelector } from '../store/hooks';
+import { useAppSelector } from '../../store/hooks';
 import { useEffect, useState } from 'react';
 
 const Footer = () => {

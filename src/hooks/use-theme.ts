@@ -1,5 +1,5 @@
 import { useAppSelector } from '../store/hooks';
-import { RootState } from '../store/store';
+
 import { Styles } from '../models/ui-models';
 
 const useTheme = (module: Styles) => {
@@ -7,8 +7,10 @@ const useTheme = (module: Styles) => {
   let currentTheme;
   const darkStyles = {
     results: `${module.resultContainer} ${module.resultContainerDark}`,
-    table: module['table-dark'],
-    tableHead: `${module.stikyHead} ${module.stikyHeadDark}`,
+    tableContainer: `${module.tableContainer}`,
+    tableHead: `${module.tableHead}`,
+    tableBody: `${module.tableBody}`,
+    tableRow: `${module.tableRow}`,
     addBtn: `${module.addBtn} ${module.btnDark}`,
     switchThemeText: 'to light mode',
     switchThemeBtn: `${module.btn} ${module.btnDark}`,
@@ -26,8 +28,10 @@ const useTheme = (module: Styles) => {
 
   const lightStyles = {
     results: `${module.resultContainer} ${module.resultContainerLight}`,
-    table: module['table-light'],
-    tableHead: `${module.stikyHead} ${module.stikyHeadLight}`,
+    tableContainer: `${module.tableContainer}`,
+    tableHead: `${module.tableHead}`,
+    tableBody: `${module.tableBody}`,
+    tableRow: `${module.tableRow}`,
     addBtn: `${module.addBtn} ${module.btnLight}`,
     switchThemeText: 'to dark mode',
     switchThemeBtn: `${module.btn} ${module.btnLight}`,

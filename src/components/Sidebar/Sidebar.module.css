@@ -3,7 +3,7 @@
   height: 100%;
   background: grey;
   position: absolute;
-  z-index: 999;
+  z-index: 800;
   left: -200px;
   transition: transform 0.7s;
   padding: 10px;
@@ -50,4 +50,8 @@
   cursor: pointer;
   margin-top: 10px;
   font-size: clamp(0.8rem, 0.5rem + 1vw, 1.2rem);
+}
+
+.activeLink {
+  color: blue;
 }

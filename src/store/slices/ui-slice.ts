@@ -8,6 +8,7 @@ const UiSlice = createSlice({
     showSellModal: false,
     showEditModal: false,
     hasError: false,
+    currentPageShown: 'market',
   },
   reducers: {
     changeTheme(state) {
@@ -36,6 +37,9 @@ const UiSlice = createSlice({
     },
     setError(state, action) {
       state.hasError = action.payload;
+    },
+    setCurrentPage(state, action) {
+      state.currentPageShown = action.payload;
     },
   },
 });

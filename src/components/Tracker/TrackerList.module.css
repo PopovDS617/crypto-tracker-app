@@ -4,49 +4,41 @@
   justify-content: center;
 }
 
-table {
-  display: block;
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tableHead {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
   font-size: clamp(0.8rem, 0.2rem + 1vw, 1.1rem);
-  margin: 0.1rem 1rem;
-  border-collapse: separate;
-  text-align: center;
-  table-layout: fixed;
+  justify-content: start;
+  align-items: center;
+}
+.tableBody {
   overflow-y: auto;
-  max-height: 40vh;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  /* display: grid;
+  grid-template-columns: repeat(10, 1fr);
+
+  font-size: clamp(0.8rem, 0.2rem + 1vw, 1.1rem); */
 }
 
-table th {
-  width: 10rem;
-  padding: 0.4rem 0.6rem;
-}
-
-.table-light th {
-  background-color: inherit;
-  border: 0.1rem solid black;
-}
-
-.table-dark th {
-  background-color: inherit;
-  border: 0.1rem solid white;
-}
-
-.stikyHead {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-
-  border: 0.1rem solid white;
-}
-
-.stikyHeadDark {
-  color: white;
-  background-color: black;
-  transition: all 1s;
-}
-.stikyHeadLight {
-  color: black;
-  background-color: white;
-  transition: all 1s;
+.tableRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  font-size: clamp(0.8rem, 0.2rem + 1vw, 1.1rem);
+  justify-content: start;
+  align-items: center;
 }
 
 .statusSelect {
@@ -68,31 +60,14 @@ table th {
 
 .itemRemove {
   border: none;
-  width: 8rem;
 }
 .itemChange {
   border: none;
-  width: 8rem;
 }
 
 .emptyList {
   padding: 1rem;
   font-size: clamp(1rem, 0.5rem + 2vw, 1.5rem);
-}
-
-th:last-child {
-  border: none;
-  width: 3rem;
-}
-
-th:first-child {
-  border: none;
-  width: 3rem;
-}
-
-th:nth-child(9) {
-  border: none;
-  width: 3rem;
 }
 
 .addBtn {
