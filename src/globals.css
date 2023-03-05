@@ -15,35 +15,30 @@
 .layout-dark {
   color: white;
   background-color: black;
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: background-color 0.5s;
+  -o-transition: background-color 0.5s;
+  transition: background-color 0.5s;
 }
 
 .layout-light {
   color: black;
   background-color: white;
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: background-color 0.5s;
+  -o-transition: background-color 0.5s;
+  transition: background-color 0.5s;
 }
 
 .info {
   max-width: 120rem;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  /* display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center;
-  height: 20vh;
+  align-items: center; */
+
   margin: 0.25rem auto;
   width: 95%;
-}
-
-.list {
-  max-width: 100rem;
-  width: 70%;
 }
 
 .results {

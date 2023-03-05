@@ -2,7 +2,7 @@ export interface Token {
   tokenName: string;
   price: number;
   dailyChange: number;
-  global: boolean;
+  type: string;
   displayGlobalFullName?: string;
   displayGlobalShortName?: string;
 }

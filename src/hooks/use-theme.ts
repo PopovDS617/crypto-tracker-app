@@ -6,6 +6,7 @@ const useTheme = (module: Styles) => {
   const appTheme = useAppSelector((state) => state.ui.theme);
   let currentTheme;
   const darkStyles = {
+    header: `${module.headerContainerDark} ${module.headerContainer}`,
     results: `${module.resultContainer} ${module.resultContainerDark}`,
     tableContainer: `${module.tableContainer}`,
     tableHead: `${module.tableHead}`,
@@ -27,6 +28,7 @@ const useTheme = (module: Styles) => {
   };
 
   const lightStyles = {
+    header: `${module.headerContainerLight} ${module.headerContainer}`,
     results: `${module.resultContainer} ${module.resultContainerLight}`,
     tableContainer: `${module.tableContainer}`,
     tableHead: `${module.tableHead}`,

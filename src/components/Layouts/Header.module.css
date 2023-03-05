@@ -1,7 +1,18 @@
 .headerContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  width: 100%;
+}
+
+.headerContainerDark {
+  background-color: black;
+}
+.headerContainerLight {
+  background-color: white;
 }
 
 .headerTitle {

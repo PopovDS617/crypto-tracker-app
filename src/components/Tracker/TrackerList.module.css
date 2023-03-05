@@ -1,7 +1,7 @@
 .trackerList {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .tableContainer {
@@ -18,7 +18,13 @@
   font-size: clamp(0.8rem, 0.2rem + 1vw, 1.1rem);
   justify-content: start;
   align-items: center;
+  column-gap: 30px;
+  text-align: center;
+  justify-content: center;
+  border-bottom: 1px black solid;
+  padding-bottom: 10px;
 }
+
 .tableBody {
   overflow-y: auto;
   width: 100%;
@@ -26,19 +32,17 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  /* display: grid;
-  grid-template-columns: repeat(10, 1fr);
-
-  font-size: clamp(0.8rem, 0.2rem + 1vw, 1.1rem); */
 }
 
 .tableRow {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  column-gap: 30px;
   font-size: clamp(0.8rem, 0.2rem + 1vw, 1.1rem);
   justify-content: start;
   align-items: center;
+  text-align: center;
 }
 
 .statusSelect {

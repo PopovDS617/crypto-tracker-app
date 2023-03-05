@@ -34,7 +34,7 @@ const TrackerListItem = (props: Props) => {
 
   return (
     <>
-      <div>
+      <div className={styles.icon}>
         {props.status === 'active' && (
           <span className={styles.icon} onClick={props.onSell}>
             <DoneIcon />
@@ -50,12 +50,12 @@ const TrackerListItem = (props: Props) => {
         {calculatedGainLoss}
       </div>
       <div>{props.status}</div>
-      <div>
+      <div className={styles.icon}>
         <span className={styles.icon} onClick={props.onEdit}>
           <EditIcon />
         </span>
       </div>
-      <div>
+      <div className={styles.iconContainer}>
         <span className={styles.icon} onClick={props.onDelete}>
           <DeleteIcon />
         </span>

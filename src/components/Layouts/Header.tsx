@@ -5,14 +5,14 @@ import useTheme from '../../hooks/use-theme';
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const { switchThemeBtn, switchThemeText } = useTheme(styles);
+  const { switchThemeBtn, switchThemeText, header } = useTheme(styles);
 
   const changeThemeHandler = () => {
     dispatch(UiActions.changeTheme());
   };
 
   return (
-    <header className={styles.headerContainer}>
+    <header className={header}>
       <div className={styles.headerTitle}>
         <h2>crypto tracker</h2>
       </div>

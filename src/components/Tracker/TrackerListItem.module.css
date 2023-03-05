@@ -5,9 +5,11 @@
 .loss {
   color: red;
 }
-
+.iconContainer {
+  width: 20px;
+}
 .icon {
-  opacity: 0.3;
+  opacity: 0.6;
   cursor: pointer;
 }
 
