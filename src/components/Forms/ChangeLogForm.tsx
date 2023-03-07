@@ -1,9 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { globalActions } from '../../store/global-slice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { globalActions } from '../../store/slices/tracker-slice';
 import styles from './ChangeLogForm.module.css';
-import useTheme from '../../hooks/use-change-theme';
-import { RootState } from '../../store';
+import useTheme from '../../hooks/use-theme';
 
 interface Props {
   onClose: () => void;
@@ -11,10 +10,12 @@ interface Props {
 }
 
 const ChangeLogForm = (props: Props) => {
-  const logList = useSelector((state: RootState) => state.global.logs);
+  const logList = useAppSelector((state) => state.global.logs);
   const changeItem = logList.find((item) => item.id === props.editId);
 
   const { changeForm, changeFormInput, changeFormBtn } = useTheme(styles);
+
+  const dispatch = useAppDispatch();
 
   const [values, setValues] = useState({
     buyPrice: changeItem?.buyPrice,
@@ -29,8 +30,6 @@ const ChangeLogForm = (props: Props) => {
       [event.target.name]: +event.target.value,
     }));
   };
-
-  const dispatch = useDispatch();
 
   const editSubmitHandler = (event: FormEvent) => {
     event.preventDefault();

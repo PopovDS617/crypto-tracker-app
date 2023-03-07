@@ -1,0 +1,62 @@
+.headerContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.headerContainerDark {
+  background-color: black;
+}
+.headerContainerLight {
+  background-color: white;
+}
+
+.headerTitle {
+  margin-right: 2rem;
+}
+.headerTitle h2 {
+  padding: 0;
+  margin: 0;
+  font-size: clamp(1rem, 0.5rem + 4vh, 3rem);
+}
+
+.headerActions {
+  padding: 20px;
+}
+
+.headerActions button {
+  font-weight: 900;
+  box-sizing: border-box;
+  padding: 7px;
+  font-family: inherit;
+  font-size: clamp(0.8rem, 0.5rem + 1vw, 1.2rem);
+  border: none;
+}
+
+.btn {
+  transition: all 0.8s;
+  cursor: pointer;
+}
+
+.btnDark {
+  background-color: white;
+  color: black;
+}
+
+.btnLight {
+  background-color: black;
+  color: white;
+}
+.btnDark:hover {
+  box-shadow: 0px 0px 0 0.1rem rgb(255, 255, 255);
+  transition: 0.3s;
+}
+
+.btnLight:hover {
+  box-shadow: 0px 0px 0 0.1rem rgb(0, 0, 0);
+  transition: 0.3s;
+}

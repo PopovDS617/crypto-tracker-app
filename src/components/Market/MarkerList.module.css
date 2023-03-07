@@ -1,0 +1,18 @@
+.marketListContainer {
+  padding: 15px;
+}
+.marketListContainer h2 {
+  margin: 20px 0 0 0;
+}
+
+.marketList {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (max-width: 1800px) {
+  .global-list {
+    flex-wrap: wrap;
+  }
+}

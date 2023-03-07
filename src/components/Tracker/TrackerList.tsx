@@ -1,35 +1,30 @@
 import React, { ChangeEvent, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { globalActions } from '../../store/global-slice';
+
+import { globalActions } from '../../store/slices/tracker-slice';
 import styles from './TrackerList.module.css';
 import TrackerListItem from './TrackerListItem';
-import Modal from '../../UI/Modal';
-import { UiActions } from '../../store/ui-slice';
+import ModalWindow from '../../UI/Modal/Modal';
+import { UiActions } from '../../store/slices/ui-slice';
 import NewLogForm from '../Forms/NewLogForm';
 import SellLogForm from '../Forms/SellLogForm';
 import ChangeLogForm from '../Forms/ChangeLogForm';
-import useTheme from '../../hooks/use-change-theme';
-import { RootState } from '../../store';
+import useTheme from '../../hooks/use-theme';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
 
 const TrackerList = () => {
   const [filterValue, setFilterValue] = useState('all');
   const [isSelling, setIsSelling] = useState('');
   const [isEditing, setIsEditing] = useState('');
-  const dispatch = useDispatch();
-  const logs = useSelector((state: RootState) => state.global.logs);
-  const priceList = useSelector((state: RootState) => state.global.tokens);
+  const dispatch = useAppDispatch();
+  const logs = useAppSelector((state) => state.global.logs);
+  const priceList = useAppSelector((state) => state.global.tokens);
 
-  const isAddModalShown = useSelector(
-    (state: RootState) => state.ui.showAddModal
-  );
-  const isSellModalShown = useSelector(
-    (state: RootState) => state.ui.showSellModal
-  );
-  const isEditModalShown = useSelector(
-    (state: RootState) => state.ui.showEditModal
-  );
+  const isAddModalShown = useAppSelector((state) => state.ui.showAddModal);
+  const isSellModalShown = useAppSelector((state) => state.ui.showSellModal);
+  const isEditModalShown = useAppSelector((state) => state.ui.showEditModal);
 
-  const { table, tableHead, addBtn } = useTheme(styles);
+  const { tableContainer, tableHead, tableBody, tableRow, addBtn } =
+    useTheme(styles);
 
   const showAddModalHandler = () => {
     dispatch(UiActions.showAddModal());
@@ -65,10 +60,9 @@ const TrackerList = () => {
     const tokenData = priceList.find((el) => el.tokenName === token.tokenName);
 
     return (
-      <tr key={Math.random().toFixed(8)}>
+      <div key={Math.random().toFixed(8)} className={tableRow}>
         <TrackerListItem
           id={token.id}
-          key={Math.random().toFixed(8)}
           name={token.tokenName}
           buyPrice={token.buyPrice}
           quantity={token.quantity}
@@ -80,7 +74,7 @@ const TrackerList = () => {
           onSell={showSellModalHandler.bind(null, token.id)}
           onEdit={showEditModalHandler.bind(null, token.id)}
         />
-      </tr>
+      </div>
     );
   });
 
@@ -93,59 +87,58 @@ const TrackerList = () => {
   );
 
   return (
-    <React.Fragment>
+    <div className="tracker">
       <section>
         <div className={styles.trackerList}>
           {isAddModalShown && (
-            <Modal onClose={hideAllModalsHandler}>
+            <ModalWindow onClose={hideAllModalsHandler}>
               <NewLogForm onClose={hideAllModalsHandler} />
-            </Modal>
+            </ModalWindow>
           )}
           {isSellModalShown && (
-            <Modal onClose={hideAllModalsHandler}>
+            <ModalWindow onClose={hideAllModalsHandler}>
               <SellLogForm onClose={hideAllModalsHandler} sellId={isSelling} />
-            </Modal>
+            </ModalWindow>
           )}
           {isEditModalShown && (
-            <Modal onClose={hideAllModalsHandler}>
+            <ModalWindow onClose={hideAllModalsHandler}>
               <ChangeLogForm
                 onClose={hideAllModalsHandler}
                 editId={isEditing}
               />
-            </Modal>
+            </ModalWindow>
           )}
 
-          <table className={table}>
-            <thead className={tableHead}>
-              <tr>
-                <th className={styles.hiddenTd}></th>
-                <th>token</th>
-                <th>quantity</th>
-                <th>buying price</th>
-                <th>selling price</th>
-                <th>current price</th>
-                <th>profit / loss</th>
-                <th>
-                  <select
-                    onChange={filterHandler}
-                    name="status"
-                    className={styles.statusSelect}
-                  >
-                    <option value="all" defaultValue="true">
-                      all
-                    </option>
-                    <option value="active">active</option>
-                    <option value="sold">sold</option>
-                  </select>
-                </th>
-                <th className={styles.itemChange}></th>
-                <th className={styles.itemRemove}></th>
-              </tr>
-            </thead>
-            <tbody>
+          <div className={tableContainer}>
+            <div className={tableHead}>
+              <div></div>
+              <div>token</div>
+              <div>quantity</div>
+              <div>buying price</div>
+              <div>selling price</div>
+              <div>current price</div>
+              <div>profit / loss</div>
+              <div>
+                <select
+                  onChange={filterHandler}
+                  name="status"
+                  className={styles.statusSelect}
+                >
+                  <option value="all" defaultValue="true">
+                    all
+                  </option>
+                  <option value="active">active</option>
+                  <option value="sold">sold</option>
+                </select>
+              </div>
+              <div></div>
+              <div></div>
+            </div>
+
+            <div className={tableBody}>
               {transformedList.length >= 1 ? transformedList : emptyList}
-            </tbody>
-          </table>
+            </div>
+          </div>
         </div>
         <div className={styles.addLogControls}>
           <button onClick={showAddModalHandler} className={addBtn}>
@@ -153,7 +146,7 @@ const TrackerList = () => {
           </button>
         </div>
       </section>
-    </React.Fragment>
+    </div>
   );
 };
 

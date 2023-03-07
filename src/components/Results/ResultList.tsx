@@ -1,12 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../store/hooks';
 import styles from './ResultList.module.css';
-import useTheme from '../../hooks/use-change-theme';
-import { RootState } from '../../store';
+import useTheme from '../../hooks/use-theme';
 
 const ResultList = () => {
-  const logs = useSelector((state: RootState) => state.global.logs);
-  const prices = useSelector((state: RootState) => state.global.tokens);
+  const logs = useAppSelector((state) => state.global.logs);
+  const prices = useAppSelector((state) => state.global.tokens);
 
   const { results } = useTheme(styles);
 
@@ -53,16 +52,22 @@ const ResultList = () => {
   }
 
   return (
-    <div className={results}>
-      <div>
-        {'Completed deals: '}
-        <span className={completedDealsText}>
-          {completedDealsResult.toFixed(2)}
-        </span>
-      </div>
-      <div>
-        {'Current deals: '}
-        <span className={activeDealsText}>{activeDealsResult.toFixed(2)}</span>
+    <div className="info">
+      <div className="results">
+        <div className={results}>
+          <div>
+            {'Completed deals: '}
+            <span className={completedDealsText}>
+              {completedDealsResult.toFixed(2)}
+            </span>
+          </div>
+          <div>
+            {'Current deals: '}
+            <span className={activeDealsText}>
+              {activeDealsResult.toFixed(2)}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

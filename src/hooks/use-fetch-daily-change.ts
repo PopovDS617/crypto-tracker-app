@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { globalActions } from '../store/global-slice';
+import { globalActions } from '../store/slices/tracker-slice';
 import { tokens } from '../data/data';
 import { urlConverter } from '../utils/converters';
 

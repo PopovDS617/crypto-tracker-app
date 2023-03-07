@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
-import { globalActions } from '../store/global-slice';
+import { globalActions } from '../store/slices/tracker-slice';
 import { tokens } from '../data/data';
 import { urlConverter } from '../utils/converters';
-import { UiActions } from '../store/ui-slice';
+import { UiActions } from '../store/slices/ui-slice';
 import { useDispatch } from 'react-redux';
 
 const useFetchCurrentPrice = () => {

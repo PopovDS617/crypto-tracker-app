@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './TrackerListItem.module.css';
-import DoneIcon from '../../UI/DoneIcon';
-import DeleteIcon from '../../UI/DeleteIcon';
-import EditIcon from '../../UI/EditIcon';
+import DoneIcon from '../../UI/Icons/DoneIcon';
+import DeleteIcon from '../../UI/Icons/DeleteIcon';
+import EditIcon from '../../UI/Icons/EditIcon';
 
 interface Props {
   id: string;
-  key: string;
   name: string;
   buyPrice: number;
   quantity: number;
@@ -34,34 +33,34 @@ const TrackerListItem = (props: Props) => {
   }
 
   return (
-    <React.Fragment>
-      <td>
+    <>
+      <div className={styles.icon}>
         {props.status === 'active' && (
           <span className={styles.icon} onClick={props.onSell}>
             <DoneIcon />
           </span>
         )}
-      </td>
-      <td>{props.name}</td>
-      <td>{props.quantity}</td>
-      <td>{props.buyPrice}</td>
-      <td>{props.sellPrice}</td>
-      <td>{props.price}</td>
-      <td className={calculatedGainLoss < 0 ? styles.loss : styles.profit}>
+      </div>
+      <div>{props.name}</div>
+      <div>{props.quantity}</div>
+      <div>{props.buyPrice}</div>
+      <div>{props.sellPrice}</div>
+      <div>{props.price}</div>
+      <div className={calculatedGainLoss < 0 ? styles.loss : styles.profit}>
         {calculatedGainLoss}
-      </td>
-      <td>{props.status}</td>
-      <td>
+      </div>
+      <div>{props.status}</div>
+      <div className={styles.icon}>
         <span className={styles.icon} onClick={props.onEdit}>
           <EditIcon />
         </span>
-      </td>
-      <td>
+      </div>
+      <div className={styles.iconContainer}>
         <span className={styles.icon} onClick={props.onDelete}>
           <DeleteIcon />
         </span>
-      </td>
-    </React.Fragment>
+      </div>
+    </>
   );
 };
 

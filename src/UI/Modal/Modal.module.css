@@ -1,0 +1,32 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 900;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal {
+  color: white;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  animation: on-enter 300ms ease-out forwards;
+  transition: opacity 1s ease-in-out;
+}
+
+@keyframes on-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

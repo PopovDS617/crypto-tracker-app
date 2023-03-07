@@ -1,21 +1,17 @@
-import TrackerList from '../components/Tracker/TrackerList';
-import GlobalMarketList from '../components/GlobalMarket/GlobalMarketList';
-import ResultList from '../components/Results/ResultList';
-import Header from '../layouts/Header';
+import Header from '../components/Layouts/Header';
 import useFetchCurrentPrice from '../hooks/use-fetch-current-price';
 import useFetchDailyChange from '../hooks/use-fetch-daily-change';
-import Footer from '../layouts/Footer';
-import { RootState } from '../store/index';
-
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import Footer from '../components/Layouts/Footer';
+import { useAppSelector } from '../store/hooks';
+import { useEffect, useState } from 'react';
+import Sidebar from '../components/Sidebar/Sidebar';
+import Content from '../components/Content/Content';
 
 const Tracker = () => {
   const { fetchData: fetchCurrentPrice } = useFetchCurrentPrice();
-
   const { fetchData: fetchDailyChange } = useFetchDailyChange();
 
-  const appTheme = useSelector((state: RootState) => state.ui.theme);
+  const appTheme = useAppSelector((state) => state.ui.theme);
 
   let currentTheme;
   if (appTheme === 'dark') {
@@ -39,18 +35,8 @@ const Tracker = () => {
       <div className="header">
         <Header />
       </div>
-      <div className="info">
-        <div className="list">
-          <GlobalMarketList />
-        </div>
-        <div className="results">
-          <ResultList />
-        </div>
-      </div>
-
-      <div className="tracker">
-        <TrackerList />
-      </div>
+      <Sidebar />
+      <Content />
 
       <div className="footer">
         <Footer />

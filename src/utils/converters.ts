@@ -1,4 +1,4 @@
-import { Token } from '../models/token-models';
+import { Token } from '../models/tracker-models';
 
 export const urlConverter = (data: Token[], infoType: string) => {
   const urlList = data.map((token) => token.tokenName);
